@@ -20,3 +20,20 @@ _**4. Seguido de esto creamos nuestra rama en la que vamos a trabajar, y se pued
 _**5. Nos paramos en la rama que creamos. Para ver en que rama estamos situados utilizamos el siguiente comando**_
 * git branch -l 
 * _ó tambien_ git branch -v   _(para ver mas informacion)_
+* _Con este comando te paras en la rama que quieres_  git checkout _nombre_rama_
+
+
+## Comandos utiles
+* Renombrar ramas
+    * git branch -m [_nombre_rama_]  [_nuevo_nombre_]   (sin los corchetes)
+    
+* Renombrar un commit anterior
+    * git commit --amend "se agrega el texto"
+
+* Se devulve un paso es como hacer Ctrl +z
+    * git rm --cached _nombre_archivo_
+    
+* Eliminacion forsoza de un archivo antes de hacer commit 
+    * git rm -f _nombre_archivo_
+    
+ 
