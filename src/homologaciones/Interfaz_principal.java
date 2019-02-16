@@ -100,7 +100,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 190, 150));
 
-        jButton1.setText("Salir");
+        jButton1.setText("EXIT");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 490, 110, 50));
 
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
