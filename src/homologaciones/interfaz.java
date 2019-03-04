@@ -81,7 +81,7 @@ public class interfaz extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("consultar");
+        jButton2.setText("Consultar proceso");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
