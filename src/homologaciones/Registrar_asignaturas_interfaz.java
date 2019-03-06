@@ -46,21 +46,24 @@ public class Registrar_asignaturas_interfaz extends javax.swing.JFrame {
         jLTexto_superior = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        jTCodigoA = new javax.swing.JTextField();
+        jTNumCreditos = new javax.swing.JTextField();
+        jTNombreA = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jLabel10 = new javax.swing.JLabel();
+        jRSiHabilitable = new javax.swing.JRadioButton();
+        jRInactivo = new javax.swing.JRadioButton();
+        jRActivo = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jRNoHabilitable = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        jRSiValidable = new javax.swing.JRadioButton();
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator1 = new javax.swing.JSeparator();
-        jRadioButton4 = new javax.swing.JRadioButton();
+        jRNoValidable = new javax.swing.JRadioButton();
         jButton4 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
@@ -190,20 +193,20 @@ public class Registrar_asignaturas_interfaz extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoUnivalle.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jTextField2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTextField2.setBorder(null);
-        jTextField2.setOpaque(false);
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 210, 40));
+        jTCodigoA.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTCodigoA.setBorder(null);
+        jTCodigoA.setOpaque(false);
+        getContentPane().add(jTCodigoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, 210, 40));
 
-        jTextField3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTextField3.setBorder(null);
-        jTextField3.setOpaque(false);
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 210, 40));
+        jTNumCreditos.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTNumCreditos.setBorder(null);
+        jTNumCreditos.setOpaque(false);
+        getContentPane().add(jTNumCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 360, 210, 40));
 
-        jTextField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTextField1.setBorder(null);
-        jTextField1.setOpaque(false);
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 210, 40));
+        jTNombreA.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTNombreA.setBorder(null);
+        jTNombreA.setOpaque(false);
+        getContentPane().add(jTNombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 210, 40));
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -231,14 +234,35 @@ public class Registrar_asignaturas_interfaz extends javax.swing.JFrame {
         jLabel8.setText("Habilitable");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 450, -1, -1));
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("Si");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        jLabel10.setText("Estado");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, -1, -1));
+
+        jRSiHabilitable.setBackground(new java.awt.Color(255, 255, 255));
+        jRSiHabilitable.setText("Si");
+        jRSiHabilitable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                jRSiHabilitableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, -1, -1));
+        getContentPane().add(jRSiHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 450, -1, -1));
+
+        jRInactivo.setBackground(new java.awt.Color(255, 255, 255));
+        jRInactivo.setText("Inactivo");
+        jRInactivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRInactivoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 560, -1, -1));
+
+        jRActivo.setBackground(new java.awt.Color(255, 255, 255));
+        jRActivo.setText("Activo");
+        jRActivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRActivoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 560, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -247,32 +271,37 @@ public class Registrar_asignaturas_interfaz extends javax.swing.JFrame {
         jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 450, -1));
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("No");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        jRNoHabilitable.setBackground(new java.awt.Color(255, 255, 255));
+        jRNoHabilitable.setText("No");
+        jRNoHabilitable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                jRNoHabilitableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, -1, -1));
+        getContentPane().add(jRNoHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, -1, -1));
 
         jLabel9.setText("Validable");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 510, -1, -1));
 
-        jRadioButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton3.setText("Si");
-        getContentPane().add(jRadioButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, -1, -1));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 570, 430, 30));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 430, 30));
-
-        jRadioButton4.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton4.setText("No");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+        jRSiValidable.setBackground(new java.awt.Color(255, 255, 255));
+        jRSiValidable.setText("Si");
+        jRSiValidable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
+                jRSiValidableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, -1, -1));
+        getContentPane().add(jRSiValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, -1, -1));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, 430, 30));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 420, 430, 30));
+
+        jRNoValidable.setBackground(new java.awt.Color(255, 255, 255));
+        jRNoValidable.setText("No");
+        jRNoValidable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRNoValidableActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRNoValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, -1, -1));
 
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
@@ -282,7 +311,12 @@ public class Registrar_asignaturas_interfaz extends javax.swing.JFrame {
         jButton4.setContentAreaFilled(false);
         jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 600, -1, -1));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 630, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, -1));
@@ -326,17 +360,106 @@ public class Registrar_asignaturas_interfaz extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void jRNoHabilitableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRNoHabilitableActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+         if (jRNoHabilitable.isSelected()==true){
+            jRSiHabilitable.setEnabled(false);
+           
+        }
+        else{
+            jRSiHabilitable.setEnabled(true);
+        }
+    }//GEN-LAST:event_jRNoHabilitableActionPerformed
 
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+    private void jRNoValidableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRNoValidableActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
+         if (jRNoValidable.isSelected()==true){
+            jRSiValidable.setEnabled(false);
+           
+        }
+        else{
+            jRSiValidable.setEnabled(true);
+        }
+    }//GEN-LAST:event_jRNoValidableActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void jRSiHabilitableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRSiHabilitableActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+        if (jRSiHabilitable.isSelected()==true){
+            jRNoHabilitable.setEnabled(false);
+           
+        }
+        else{
+            jRNoHabilitable.setEnabled(true);
+        }
+    }//GEN-LAST:event_jRSiHabilitableActionPerformed
+
+    private void jRSiValidableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRSiValidableActionPerformed
+        // TODO add your handling code here:
+         if (jRSiValidable.isSelected()==true){
+            jRNoValidable.setEnabled(false);
+           
+        }
+        else{
+            jRNoValidable.setEnabled(true);
+        }
+    }//GEN-LAST:event_jRSiValidableActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        try {     
+            String nombreA = jTNombreA.getText();
+            String codigoA = jTCodigoA.getText();
+            int numCreditos = Integer.parseInt(jTNumCreditos.getText());
+            String opcionHabilitable = "0";
+            String opcionValidable = "0";     
+            String opcionEstado ="0";
+            
+            if (jRSiHabilitable.isSelected()){
+                 opcionHabilitable = "1";
+            }
+             if (jRSiValidable.isSelected()){
+                 opcionValidable = "1";
+            }
+            if (jRActivo.isSelected()){
+                opcionEstado="1";
+            } 
+            
+            String sql = "insert into Asignaturas (nombreAsignatura,codigoAsignatura,numCreditos,validable,habilitable,estado) values ('"+nombreA+"','"+codigoA+"','"+numCreditos+"','"+opcionValidable+"','"+opcionHabilitable+"','"+opcionEstado+"')";
+            conexionBD con = new conexionBD();
+       
+            
+            jTNombreA.setText("");
+            jTCodigoA.setText("");
+            jTNumCreditos.setText("");
+            
+            con.sentencia(sql);
+            MensajeConfirmacion mensaje = new MensajeConfirmacion();
+            mensaje.setVisible(true);
+            
+        } catch (Exception ex) {
+            System.out.println("error aqui cuando presione el boton ");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jRInactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRInactivoActionPerformed
+        // TODO add your handling code here:
+        if(jRInactivo.isSelected()){
+            jRActivo.setEnabled(false);
+        }
+        else {
+            jRActivo.setEnabled(true);
+        }
+    }//GEN-LAST:event_jRInactivoActionPerformed
+
+    private void jRActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRActivoActionPerformed
+        // TODO add your handling code here:
+        if(jRActivo.isSelected()){
+            jRInactivo.setEnabled(false);
+        }
+        else {
+            jRInactivo.setEnabled(true);
+        }
+    }//GEN-LAST:event_jRActivoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -389,6 +512,7 @@ public class Registrar_asignaturas_interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLTexto_superior;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -397,10 +521,12 @@ public class Registrar_asignaturas_interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRActivo;
+    private javax.swing.JRadioButton jRInactivo;
+    private javax.swing.JRadioButton jRNoHabilitable;
+    private javax.swing.JRadioButton jRNoValidable;
+    private javax.swing.JRadioButton jRSiHabilitable;
+    private javax.swing.JRadioButton jRSiValidable;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -408,8 +534,8 @@ public class Registrar_asignaturas_interfaz extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTCodigoA;
+    private javax.swing.JTextField jTNombreA;
+    private javax.swing.JTextField jTNumCreditos;
     // End of variables declaration//GEN-END:variables
 }
