@@ -22,14 +22,22 @@ public class Interfaz_principal extends javax.swing.JFrame {
      * Creates new form homologar_interfaz
      */
     int x,y;
+    int controlP=0;
     
     public Interfaz_principal() throws ClassNotFoundException {
         
         initComponents();
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
-    }
 
+    }
+    
+    public void setValor (int valor){
+        controlP=valor;
+        System.out.println("dentro del set: "+valor+","+controlP);
+        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -219,6 +227,7 @@ public class Interfaz_principal extends javax.swing.JFrame {
          Asignaturas_interfaz asignaturas ;
 
         asignaturas = new Asignaturas_interfaz();
+        asignaturas.setControl(controlP);
         this.dispose();
         asignaturas.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -281,10 +290,12 @@ public class Interfaz_principal extends javax.swing.JFrame {
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
                     
                 } catch (Exception ex) {
+                    
                     System.out.println("Error de recuadro interfaz");
                 } 
                 try{
                     new Interfaz_principal().setVisible(true);
+                   
                 }
                 catch(Exception ex){
                     System.out.println("putto error de mierddaaaaaa");

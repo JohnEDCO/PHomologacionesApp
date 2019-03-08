@@ -18,12 +18,26 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
      * Creates new form Asignaturas_interfaz
      */
     int x,y;
+    int control=0;
+    
+    public void setControl(int variableControl){
+        
+       control=variableControl;
+        System.out.println("control en registrar:"+control);
+        if (control==1){
+            jBRegistrarA.setVisible(false);
+        }
+        
+    }
     
     public Asignaturas_interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
-        
+        System.out.println("control en constructor registrar: "+ control);
+        if (control==1){
+            jBRegistrarA.setVisible(false);
+        }
     }
     
     /**
@@ -48,7 +62,7 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         jLTexto_superior = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        jBRegistrarA = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -179,19 +193,19 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoUnivalle.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton_agregar.png"))); // NOI18N
-        jButton7.setText("     Registrar asignatura");
-        jButton7.setBorder(null);
-        jButton7.setBorderPainted(false);
-        jButton7.setContentAreaFilled(false);
-        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jBRegistrarA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton_agregar.png"))); // NOI18N
+        jBRegistrarA.setText("     Registrar asignatura");
+        jBRegistrarA.setBorder(null);
+        jBRegistrarA.setBorderPainted(false);
+        jBRegistrarA.setContentAreaFilled(false);
+        jBRegistrarA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBRegistrarA.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBRegistrarA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                jBRegistrarAActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 230, -1));
+        getContentPane().add(jBRegistrarA, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 230, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -259,13 +273,13 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jLabel2MouseClicked
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jBRegistrarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarAActionPerformed
         // TODO add your handling code here:
         Registrar_asignaturas_interfaz registrar;
         registrar = new Registrar_asignaturas_interfaz();
         this.setVisible(false);
         registrar.setVisible(true);
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_jBRegistrarAActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
@@ -318,12 +332,12 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBRegistrarA;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLTexto_superior;
     private javax.swing.JLabel jLabel1;

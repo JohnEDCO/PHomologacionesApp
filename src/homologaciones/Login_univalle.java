@@ -23,6 +23,7 @@ public class Login_univalle extends javax.swing.JFrame {
 
 
     int x,y; //variables para el control de la posicion del login al mover con el mouse
+    int control;
     
     Connection con = null;
     PreparedStatement pst = null;
@@ -36,6 +37,7 @@ public class Login_univalle extends javax.swing.JFrame {
         AWTUtilities.setWindowOpaque(this, false);
 
     }
+    
     public void Loguear() throws ClassNotFoundException{
        
        String sql = "select * from login where usuario = ? and contraseña = ? ";
@@ -50,10 +52,11 @@ public class Login_univalle extends javax.swing.JFrame {
            
            if(rs.next()){              
 
-                   Interfaz_principal crear_interfazP = new Interfaz_principal();
-                   this.setVisible(false);
-//this.dispose();
-                   crear_interfazP.setVisible(true);
+                   Interfaz_principal interfazP = new Interfaz_principal();
+                   interfazP.setValor(control);
+                   this.dispose();
+                   
+                   interfazP.setVisible(true);
                    
                   // Login_univalle.this.setVisible(false);  
                  
@@ -92,8 +95,8 @@ public class Login_univalle extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        jREstudiante = new javax.swing.JRadioButton();
+        jRGestor = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -188,23 +191,33 @@ public class Login_univalle extends javax.swing.JFrame {
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 690, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 520, 420, 20));
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("Estudiante");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+        jREstudiante.setBackground(new java.awt.Color(255, 255, 255));
+        jREstudiante.setText("Estudiante");
+        jREstudiante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jREstudianteMouseClicked(evt);
             }
         });
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 120, -1));
+        jREstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jREstudianteActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jREstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 120, -1));
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("Gestor");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+        jRGestor.setBackground(new java.awt.Color(255, 255, 255));
+        jRGestor.setText("Gestor");
+        jRGestor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jRGestorMouseClicked(evt);
             }
         });
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 360, 110, -1));
+        jRGestor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRGestorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 360, 110, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login3.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1120, 720));
@@ -234,40 +247,58 @@ public class Login_univalle extends javax.swing.JFrame {
     }//GEN-LAST:event_jLtexto_superiorMouseDragged
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+     if(control!=0){   
         try {
             Loguear();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(Login_univalle.class.getName()).log(Level.SEVERE, null, ex);
         }
-  
+     }
+     else{
+         MensajeMarcarOpcion mensaje = new MensajeMarcarOpcion();
+         mensaje.setVisible(true);
+     }
+        
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void jREstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jREstudianteActionPerformed
         // TODO add your handling code here:
-        if (jRadioButton1.isSelected()==true){
-            jRadioButton2.setEnabled(false);
-   
+        if (jREstudiante.isSelected()==true){
+            jRGestor.setEnabled(false);
+            control=1;
         }
         else{
-             jRadioButton2.setEnabled(true);
+             jRGestor.setEnabled(true);
+             control=0;
         }
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_jREstudianteActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void jRGestorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRGestorActionPerformed
         // TODO add your handling code here:
-        if (jRadioButton2.isSelected()==true){
-            jRadioButton1.setEnabled(false);
-   
+        if (jRGestor.isSelected()==true){
+            jREstudiante.setEnabled(false);
+            control=2;
         }
         else{
-            jRadioButton1.setEnabled(true);
+            jREstudiante.setEnabled(true);
+            control=0;
         }
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_jRGestorActionPerformed
+
+    private void jREstudianteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jREstudianteMouseClicked
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_jREstudianteMouseClicked
+
+    private void jRGestorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jRGestorMouseClicked
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_jRGestorMouseClicked
 
     /**
      * @param args the command line arguments
@@ -327,8 +358,8 @@ public class Login_univalle extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLtexto_superior;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jREstudiante;
+    private javax.swing.JRadioButton jRGestor;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
