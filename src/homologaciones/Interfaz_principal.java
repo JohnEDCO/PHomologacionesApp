@@ -216,10 +216,10 @@ public class Interfaz_principal extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        Asignaturas_interfaz asignaturas ;
-        
+         Asignaturas_interfaz asignaturas ;
+
         asignaturas = new Asignaturas_interfaz();
-        this.setVisible(false);
+        this.dispose();
         asignaturas.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 

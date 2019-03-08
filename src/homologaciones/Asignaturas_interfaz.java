@@ -18,12 +18,14 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
      * Creates new form Asignaturas_interfaz
      */
     int x,y;
+    
     public Asignaturas_interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
+        
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,7 +50,6 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
@@ -201,16 +202,6 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton_editar.png"))); // NOI18N
-        jButton4.setText("Editar estado");
-        jButton4.setToolTipText("");
-        jButton4.setBorder(null);
-        jButton4.setBorderPainted(false);
-        jButton4.setContentAreaFilled(false);
-        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
-
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton_consultar.png"))); // NOI18N
         jButton8.setText("Consultar ");
         jButton8.setBorder(null);
@@ -218,7 +209,12 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         jButton8.setContentAreaFilled(false);
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, -1, -1));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, -1));
@@ -255,6 +251,7 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         x=evt.getX();
         y=evt.getY();
+        
     }//GEN-LAST:event_jLTexto_superiorMousePressed
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
@@ -266,10 +263,16 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         Registrar_asignaturas_interfaz registrar;
         registrar = new Registrar_asignaturas_interfaz();
-        
         this.setVisible(false);
         registrar.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+        Consultar_editar_asignaturas_interfaz consul_edit = new Consultar_editar_asignaturas_interfaz();
+        this.setVisible(false);
+        consul_edit.setVisible(true);
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -318,7 +321,6 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
