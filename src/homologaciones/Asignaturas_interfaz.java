@@ -23,7 +23,7 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
     public void setControl(int variableControl){
         
        control=variableControl;
-        System.out.println("control en registrar:"+control);
+        System.out.println("control en Asignaturas ventana:"+control);
         if (control==1){
             jBRegistrarA.setVisible(false);
         }
@@ -34,10 +34,8 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
-        System.out.println("control en constructor registrar: "+ control);
-        if (control==1){
-            jBRegistrarA.setVisible(false);
-        }
+        
+       
     }
     
     /**
@@ -284,6 +282,7 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         Consultar_editar_asignaturas_interfaz consul_edit = new Consultar_editar_asignaturas_interfaz();
+        consul_edit.setControl(control);
         this.setVisible(false);
         consul_edit.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed

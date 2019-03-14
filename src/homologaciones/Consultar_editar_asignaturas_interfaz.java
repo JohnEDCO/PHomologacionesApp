@@ -24,6 +24,14 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
      */
     int x,y;
     conexionBD conexion = new conexionBD();
+    int control;
+    
+    public void setControl(int variableControl){
+        
+       control=variableControl;
+        System.out.println("Control en consultar ventana: "+control);
+        
+    }
     
     public Consultar_editar_asignaturas_interfaz() {
         initComponents();
@@ -446,8 +454,10 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         Asignaturas_interfaz asignaturas ;
 
         asignaturas = new Asignaturas_interfaz();
+        asignaturas.setControl(control);
         this.dispose();
         asignaturas.setVisible(true);
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
