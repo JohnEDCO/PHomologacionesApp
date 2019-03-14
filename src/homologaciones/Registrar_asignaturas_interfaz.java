@@ -442,6 +442,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
             mensaje.setVisible(true);
             
         } catch (Exception ex) {
+            
             System.out.println("error aqui cuando presione el boton ");
             MensajeCamposVacios mensaje = new MensajeCamposVacios();
             mensaje.setVisible(true);

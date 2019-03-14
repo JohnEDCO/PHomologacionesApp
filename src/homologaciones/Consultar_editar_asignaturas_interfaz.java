@@ -77,14 +77,14 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jRSiH = new javax.swing.JRadioButton();
+        jRSiHabilitable = new javax.swing.JRadioButton();
         jRInactivo = new javax.swing.JRadioButton();
         jRActivo = new javax.swing.JRadioButton();
         jLabel7 = new javax.swing.JLabel();
-        jRNoH = new javax.swing.JRadioButton();
+        jRNoHabilitable = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
-        jRSiV = new javax.swing.JRadioButton();
-        jRNoV = new javax.swing.JRadioButton();
+        jRSiValidable = new javax.swing.JRadioButton();
+        jRNoValidable = new javax.swing.JRadioButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jTbuscador = new javax.swing.JTextField();
@@ -317,14 +317,14 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         jLabel10.setText("Estado");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 620, -1, -1));
 
-        jRSiH.setBackground(new java.awt.Color(255, 255, 255));
-        jRSiH.setText("Si");
-        jRSiH.addActionListener(new java.awt.event.ActionListener() {
+        jRSiHabilitable.setBackground(new java.awt.Color(255, 255, 255));
+        jRSiHabilitable.setText("Si");
+        jRSiHabilitable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRSiHActionPerformed(evt);
+                jRSiHabilitableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRSiH, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, -1, -1));
+        getContentPane().add(jRSiHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, -1, -1));
 
         jRInactivo.setBackground(new java.awt.Color(255, 255, 255));
         jRInactivo.setText("Inactivo");
@@ -351,35 +351,35 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 620, 450, -1));
 
-        jRNoH.setBackground(new java.awt.Color(255, 255, 255));
-        jRNoH.setText("No");
-        jRNoH.addActionListener(new java.awt.event.ActionListener() {
+        jRNoHabilitable.setBackground(new java.awt.Color(255, 255, 255));
+        jRNoHabilitable.setText("No");
+        jRNoHabilitable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRNoHActionPerformed(evt);
+                jRNoHabilitableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRNoH, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 510, -1, -1));
+        getContentPane().add(jRNoHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 510, -1, -1));
 
         jLabel9.setText("Validable");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, -1, -1));
 
-        jRSiV.setBackground(new java.awt.Color(255, 255, 255));
-        jRSiV.setText("Si");
-        jRSiV.addActionListener(new java.awt.event.ActionListener() {
+        jRSiValidable.setBackground(new java.awt.Color(255, 255, 255));
+        jRSiValidable.setText("Si");
+        jRSiValidable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRSiVActionPerformed(evt);
+                jRSiValidableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRSiV, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 570, -1, -1));
+        getContentPane().add(jRSiValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 570, -1, -1));
 
-        jRNoV.setBackground(new java.awt.Color(255, 255, 255));
-        jRNoV.setText("No");
-        jRNoV.addActionListener(new java.awt.event.ActionListener() {
+        jRNoValidable.setBackground(new java.awt.Color(255, 255, 255));
+        jRNoValidable.setText("No");
+        jRNoValidable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRNoVActionPerformed(evt);
+                jRNoValidableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRNoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 570, -1, -1));
+        getContentPane().add(jRNoValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 570, -1, -1));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 30, 220));
@@ -499,16 +499,16 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jRSiHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRSiHActionPerformed
+    private void jRSiHabilitableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRSiHabilitableActionPerformed
         // TODO add your handling code here:
-        if (jRSiH.isSelected()==true){
-            jRNoH.setEnabled(false);
+        if (jRSiHabilitable.isSelected()==true){
+            jRNoHabilitable.setEnabled(false);
 
         }
         else{
-            jRNoH.setEnabled(true);
+            jRNoHabilitable.setEnabled(true);
         }
-    }//GEN-LAST:event_jRSiHActionPerformed
+    }//GEN-LAST:event_jRSiHabilitableActionPerformed
 
     private void jRInactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRInactivoActionPerformed
         // TODO add your handling code here:
@@ -530,38 +530,38 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jRActivoActionPerformed
 
-    private void jRNoHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRNoHActionPerformed
+    private void jRNoHabilitableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRNoHabilitableActionPerformed
         // TODO add your handling code here:
-        if (jRNoH.isSelected()==true){
-            jRSiH.setEnabled(false);
+        if (jRNoHabilitable.isSelected()==true){
+            jRSiHabilitable.setEnabled(false);
 
         }
         else{
-            jRSiH.setEnabled(true);
+            jRSiHabilitable.setEnabled(true);
         }
-    }//GEN-LAST:event_jRNoHActionPerformed
+    }//GEN-LAST:event_jRNoHabilitableActionPerformed
 
-    private void jRSiVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRSiVActionPerformed
+    private void jRSiValidableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRSiValidableActionPerformed
         // TODO add your handling code here:
-        if (jRSiV.isSelected()==true){
-            jRNoV.setEnabled(false);
+        if (jRSiValidable.isSelected()==true){
+            jRNoValidable.setEnabled(false);
 
         }
         else{
-            jRNoV.setEnabled(true);
+            jRNoValidable.setEnabled(true);
         }
-    }//GEN-LAST:event_jRSiVActionPerformed
+    }//GEN-LAST:event_jRSiValidableActionPerformed
 
-    private void jRNoVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRNoVActionPerformed
+    private void jRNoValidableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRNoValidableActionPerformed
         // TODO add your handling code here:
-        if (jRNoV.isSelected()==true){
-            jRSiV.setEnabled(false);
+        if (jRNoValidable.isSelected()==true){
+            jRSiValidable.setEnabled(false);
 
         }
         else{
-            jRSiV.setEnabled(true);
+            jRSiValidable.setEnabled(true);
         }
-    }//GEN-LAST:event_jRNoVActionPerformed
+    }//GEN-LAST:event_jRNoValidableActionPerformed
 
     private void jTableAsignaturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAsignaturasMouseClicked
         // TODO add your handling code here:
@@ -571,10 +571,10 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
          System.out.println("fila seleccionada:"+filaSel);
          
          DefaultTableModel modelo = (DefaultTableModel)jTableAsignaturas.getModel();
-          String nombreA = (String)modelo.getValueAt(filaSel, 0);
+         String nombreA = (String)modelo.getValueAt(filaSel, 0);
          String codigoA = (String)modelo.getValueAt(filaSel, 1);
          String creditos = (String)modelo.getValueAt(filaSel, 2);
-         String validable = (String)modelo.getValueAt(filaSel, 3);
+         String validable = (String) modelo.getValueAt(filaSel, 3);
          String habilitable = (String)modelo.getValueAt(filaSel, 4);
          String estado = (String)modelo.getValueAt(filaSel, 5);
        
@@ -593,15 +593,45 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         jTCodigoA.setEnabled(false);
         jTNumCreditos.setEnabled(false);
  
-        if(validable == "1"){
-            System.out.println("nose");
-            jRNoV.setSelected(true);
-            jRSiV.setEnabled(false);
+        if(validable.equals("1")){
+            jRSiValidable.setSelected(true);
+            jRSiValidable.setEnabled(false);
+            jRNoValidable.setEnabled(false);
+            jRNoValidable.setSelected(false);
         }
-        else{
-            jRSiV.setSelected(true);
-            jRNoV.setEnabled(false);
-            System.out.println("ckk");
+        else {
+            jRNoValidable.setEnabled(false);
+            jRNoValidable.setSelected(true);
+            jRSiValidable.setSelected(false);
+            jRSiValidable.setEnabled(false);
+            
+        }
+        if(habilitable.equals("1")){
+            jRSiHabilitable.setSelected(true);
+            jRSiHabilitable.setEnabled(false);
+            jRNoHabilitable.setEnabled(false);
+            jRNoHabilitable.setSelected(false);
+        }
+        else {
+            jRNoHabilitable.setEnabled(false);
+            jRNoHabilitable.setSelected(true);
+            jRSiHabilitable.setSelected(false);
+            jRSiHabilitable.setEnabled(false);
+            
+        }
+        if(estado.equals("1")){
+            jRActivo.setSelected(true);
+            jRActivo.setEnabled(true);
+            jRInactivo.setEnabled(false);
+            jRInactivo.setSelected(false);
+        }
+        else {
+            jRInactivo.setSelected(true);
+            jRInactivo.setEnabled(true);
+            jRActivo.setSelected(false);
+            jRActivo.setEnabled(false);
+           
+            
         }
     }//GEN-LAST:event_jTableAsignaturasMouseClicked
 
@@ -704,10 +734,10 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRActivo;
     private javax.swing.JRadioButton jRInactivo;
-    private javax.swing.JRadioButton jRNoH;
-    private javax.swing.JRadioButton jRNoV;
-    private javax.swing.JRadioButton jRSiH;
-    private javax.swing.JRadioButton jRSiV;
+    private javax.swing.JRadioButton jRNoHabilitable;
+    private javax.swing.JRadioButton jRNoValidable;
+    private javax.swing.JRadioButton jRSiHabilitable;
+    private javax.swing.JRadioButton jRSiValidable;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

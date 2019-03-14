@@ -105,7 +105,7 @@ public class Login_univalle extends javax.swing.JFrame {
 
         jLtexto_superior.setFont(new java.awt.Font("Century Schoolbook", 0, 24)); // NOI18N
         jLtexto_superior.setForeground(new java.awt.Color(255, 0, 0));
-        jLtexto_superior.setText("LOGIN");
+        jLtexto_superior.setText("INICIAR SESION");
         jLtexto_superior.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
         jLtexto_superior.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -117,7 +117,7 @@ public class Login_univalle extends javax.swing.JFrame {
                 jLtexto_superiorMousePressed(evt);
             }
         });
-        getContentPane().add(jLtexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 60, 130, 30));
+        getContentPane().add(jLtexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 220, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -264,6 +264,10 @@ public class Login_univalle extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        Registrar_usuarios_interfaz registro = new Registrar_usuarios_interfaz();
+        
+        registro.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jREstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jREstudianteActionPerformed
