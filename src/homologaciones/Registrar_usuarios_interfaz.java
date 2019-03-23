@@ -91,7 +91,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jLabel3MouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 10, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
 
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
@@ -125,7 +125,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("Desarrollado por @Equipo Integrador");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 700, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 700, -1, -1));
 
         jREstudiante.setBackground(new java.awt.Color(255, 255, 255));
         jREstudiante.setText("Estudiante");
@@ -219,7 +219,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         getContentPane().add(MostrarContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 410, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login3.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1120, 760));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

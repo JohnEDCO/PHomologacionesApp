@@ -35,7 +35,10 @@ public class Login_univalle extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
-
+        
+        TextPrompt usuario = new TextPrompt(" Usuario", JTUsuario);
+        TextPrompt contraseña = new TextPrompt(" Contraseña", JTContraseña);
+       JTUsuario.setToolTipText("codigo si es estudiante o cedula si es gestor");
     }
     
     public void Loguear() throws ClassNotFoundException{
@@ -85,10 +88,8 @@ public class Login_univalle extends javax.swing.JFrame {
 
         jLtexto_superior = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        JTUsuario = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        JTContraseña = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -97,6 +98,8 @@ public class Login_univalle extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jREstudiante = new javax.swing.JRadioButton();
         jRGestor = new javax.swing.JRadioButton();
+        JTUsuario = new javax.swing.JTextField();
+        JTContraseña = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -128,15 +131,6 @@ public class Login_univalle extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 10, -1, -1));
 
-        JTUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        JTUsuario.setBorder(null);
-        JTUsuario.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTUsuarioActionPerformed(evt);
-            }
-        });
-        getContentPane().add(JTUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 180, 250, 30));
-
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         jButton3.setText("Registrarse");
@@ -167,24 +161,19 @@ public class Login_univalle extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 430, 170, 60));
 
-        JTContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        JTContraseña.setBorder(null);
-        JTContraseña.setOpaque(false);
-        getContentPane().add(JTContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 280, 250, 30));
-
         jLabel9.setForeground(new java.awt.Color(255, 0, 0));
         jLabel9.setText("Olvide mi contraseña");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 630, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario2.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, 60, -1));
 
         jLabel10.setForeground(new java.awt.Color(255, 0, 0));
         jLabel10.setText("Cambiar contraseña");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 630, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/contraseña2.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 60, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("Desarrollado por @Equipo Integrador");
@@ -219,8 +208,24 @@ public class Login_univalle extends javax.swing.JFrame {
         });
         getContentPane().add(jRGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 360, 110, -1));
 
+        JTUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JTUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTUsuarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JTUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 170, 250, 50));
+
+        JTContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        JTContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTContraseñaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(JTContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 270, 250, 50));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login3.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1120, 720));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1110, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -304,6 +309,10 @@ public class Login_univalle extends javax.swing.JFrame {
      
     }//GEN-LAST:event_jRGestorMouseClicked
 
+    private void JTContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTContraseñaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -350,7 +359,7 @@ public class Login_univalle extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField JTContraseña;
+    private javax.swing.JTextField JTContraseña;
     private javax.swing.JTextField JTUsuario;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
