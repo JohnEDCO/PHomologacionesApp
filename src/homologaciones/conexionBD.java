@@ -30,7 +30,7 @@ public class conexionBD {
         try{
             
             Class.forName("org.postgresql.Driver");
-            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5432/shuv","homologacionesBD", "facil");
+            Connection con = DriverManager.getConnection("jdbc:postgresql://localhost:5433/shuv","homologacionesBD", "1234");
             //JOptionPane.showMessageDialog(null, "Conexión establecida correctamente");
             
             if(con != null){
@@ -47,7 +47,7 @@ public class conexionBD {
     public conexionBD() {
         try{
              Class.forName("org.postgresql.Driver");
-             conex= DriverManager.getConnection("jdbc:postgresql://localhost:5432/shuv","homologacionesBD", "facil");
+             conex= DriverManager.getConnection("jdbc:postgresql://localhost:5433/shuv","homologacionesBD", "1234");
              System.out.println(" se hizo la conexion por aqui");
         }
         catch(Exception ex){
