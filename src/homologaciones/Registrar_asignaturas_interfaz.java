@@ -6,7 +6,10 @@
 package homologaciones;
 
 import com.sun.awt.AWTUtilities;
+import java.awt.Color;
 import javax.swing.UIManager;
+import rojerusan.RSNotifyAnimated;
+import rojerusan.RSNotifyFade;
 
 /**
  *
@@ -22,6 +25,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         initComponents();
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
+        jButton4.setToolTipText("Haga click aqui para registrar");
     }
 
     /**
@@ -440,6 +444,8 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
             con.sentencia(sql);
             MensajeConfirmacion mensaje = new MensajeConfirmacion();
             mensaje.setVisible(true);
+            
+            new rojerusan.RSNotifyFade("Enhorabuena", "se registro exitosamente la asignatura", 4, RSNotifyFade.PositionNotify.BottomRight, RSNotifyFade.TypeNotify.SUCCESS).setVisible(true);
             
         } catch (Exception ex) {
             

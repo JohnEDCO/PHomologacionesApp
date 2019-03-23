@@ -9,7 +9,10 @@ import com.sun.awt.AWTUtilities;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+<<<<<<< Updated upstream
 import javax.swing.Spring;
+=======
+>>>>>>> Stashed changes
 import javax.swing.UIManager;
 
 /**
@@ -308,6 +311,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if(control != 0){
+<<<<<<< Updated upstream
            
              if (!jPasswordField1.getText().equals("") && !jTCorreo.getText().equals("") && !jTNombre.getText().equals("")){
              int opciones = JOptionPane.showConfirmDialog(null,"¿Desea crear el usuario?");
@@ -374,8 +378,64 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
              else{
                 JOptionPane.showMessageDialog(null, "Por favor seleccione si es estudiante o gestor ");
                  }
-    }//GEN-LAST:event_jButton4ActionPerformed
+=======
+            
+           if(!jTNombre.getText().equals("") && !jTCorreo.getText().equals("") && !jTContraseña.getText().equals("")){
+               
+               System.out.println("asldkasldñasdaskdaslñdasñdkasñdl");
+            
+          try{ 
+            String sql="";
+            int cedula;
+            int codigo;
+            String nombre = jTNombre.getText();
+            String contraseña = jTContraseña.getText();
+            String correo = jTCorreo.getText();       
+            
+            if (jRGestor.isSelected()){
+                cedula = Integer.parseInt(jTDocumento.getText());
+             sql = "insert into gestor (cedula,nombre,contraseña,correo) values ('"+cedula+"','"+nombre+"','"+contraseña+"','"+correo+"')";
+                System.out.println("entroo peeggasasd");
+            }
+            else {
+               cedula = Integer.parseInt(jTDocumento.getText());
+               codigo = Integer.parseInt(jTCodigo.getText()); 
+               sql = "insert into estudiante (nombre,correo,codigo,contraseña,cedula) values ('"+nombre+"','"+correo+"','"+codigo+"','"+contraseña+"','"+cedula+"')";
+                System.out.println("nombre: "+nombre);
+            }
+            conexionBD con = new conexionBD();
+            MensajeConfirmacion nuevo = new MensajeConfirmacion();
+            nuevo.setVisible(true);
+            con.sentencia(sql);
 
+            jTCodigo.setText("");
+            jTContraseña.setText("");
+            jTNombre.setText("");
+            jTDocumento.setText("");
+            jTCorreo.setText("");
+            jREstudiante.setSelected(false);
+            jREstudiante.setEnabled(true);
+            jRGestor.setSelected(false);
+            jRGestor.setEnabled(true);
+            
+          }
+          catch (Exception ex) {
+            System.out.println("error aqui cuando presione el boton ");
+            MensajeCamposVacios mensaje = new MensajeCamposVacios();
+            mensaje.setVisible(true);
+        }
+        }
+           else{
+               JOptionPane.showMessageDialog(null, "Compruebe que todos los campos estan diligenciados");
+           }
+        }
+         else{
+           MensajeMarcarOpcion nuevo = new MensajeMarcarOpcion();
+           nuevo.setVisible(true);
+       }
+>>>>>>> Stashed changes
+    }//GEN-LAST:event_jButton4ActionPerformed
+        
     private void jTCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTCodigoActionPerformed
