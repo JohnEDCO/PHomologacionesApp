@@ -8,6 +8,8 @@ package homologaciones;
 import com.sun.awt.AWTUtilities;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.Spring;
 import javax.swing.UIManager;
 
 /**
@@ -24,10 +26,15 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
    
     public Registrar_usuarios_interfaz() {
         initComponents();
+        TextPrompt nom = new TextPrompt("Nombre", jTNombre);
+        TextPrompt ced = new TextPrompt("Documento De Identidad", jTDocumento);
+        TextPrompt ema = new TextPrompt("Email",jTCorreo);
+        TextPrompt cod = new TextPrompt("Codigo",jTCodigo);
+        TextPrompt cont = new TextPrompt("Contraseña",jPasswordField1);
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,13 +54,14 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         jTNombre = new javax.swing.JTextField();
         jTCodigo = new javax.swing.JTextField();
         jTDocumento = new javax.swing.JTextField();
-        jTContraseña = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
         jTCorreo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        MostrarContra = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,7 +106,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 560, 170, 60));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 590, 170, 60));
 
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
@@ -113,11 +121,11 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 560, 170, 60));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 590, 170, 60));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("Desarrollado por @Equipo Integrador");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 690, -1, -1));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 700, -1, -1));
 
         jREstudiante.setBackground(new java.awt.Color(255, 255, 255));
         jREstudiante.setText("Estudiante");
@@ -131,7 +139,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jREstudianteActionPerformed(evt);
             }
         });
-        getContentPane().add(jREstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, 120, -1));
+        getContentPane().add(jREstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 120, -1));
 
         jRGestor.setBackground(new java.awt.Color(255, 255, 255));
         jRGestor.setText("Gestor");
@@ -145,60 +153,73 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jRGestorActionPerformed(evt);
             }
         });
-        getContentPane().add(jRGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 150, 110, -1));
+        getContentPane().add(jRGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 110, -1));
 
         jTNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(jTNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 330, 230, 40));
+        getContentPane().add(jTNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 200, 230, 40));
 
         jTCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTCodigoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 270, 230, 40));
+        jTCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTCodigoKeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 520, 230, 40));
 
         jTDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTDocumentoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 210, 230, 40));
-
-        jTContraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTContraseñaActionPerformed(evt);
+        jTDocumento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTDocumentoKeyTyped(evt);
             }
         });
-        getContentPane().add(jTContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 390, 230, 40));
+        getContentPane().add(jTDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 280, 230, 40));
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 360, 230, 40));
 
         jTCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTCorreoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 450, 230, 40));
+        getContentPane().add(jTCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 230, 40));
 
-        jLabel2.setText("Correo");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, -1, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo nombre2.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 190, -1, -1));
 
-        jLabel4.setText("Documento");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 230, -1, -1));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo contra.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 350, -1, -1));
 
-        jLabel5.setText("Codigo");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, -1, -1));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo dco.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 270, -1, -1));
 
-        jLabel6.setText("Nombre");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, -1, -1));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo ema.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 430, -1, -1));
 
-        jLabel7.setText("Contraseña");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 410, -1, -1));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo cod2.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 500, -1, -1));
+
+        MostrarContra.setBackground(new java.awt.Color(255, 255, 255));
+        MostrarContra.setText("Mostrar Contraseña");
+        MostrarContra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarContraActionPerformed(evt);
+            }
+        });
+        getContentPane().add(MostrarContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 410, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login3.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1120, 720));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, 1120, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -225,9 +246,10 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         Login_univalle loguear = null;
         try {
             loguear = new Login_univalle();
-        } catch (ClassNotFoundException ex) {
+            } 
+        catch (ClassNotFoundException ex) {
             Logger.getLogger(Registrar_usuarios_interfaz.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            }
         
         loguear.setVisible(true);
         this.dispose();
@@ -244,7 +266,6 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
             jRGestor.setEnabled(false);
             jTCodigo.setEnabled(true);
             control=1;
-            
         }
         else{
             jRGestor.setEnabled(true);
@@ -279,67 +300,110 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTDocumentoActionPerformed
 
-    private void jTContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTContraseñaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTContraseñaActionPerformed
-
     private void jTCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCorreoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTCorreoActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+
         if(control != 0){
-          try{ 
-            String sql="";
-            int cedula;
-            int codigo;
-            String nombre = jTNombre.getText();
-            String contraseña = jTContraseña.getText();
-            String correo = jTCorreo.getText();       
-            
-            if (jRGestor.isSelected()){
-                cedula = Integer.parseInt(jTDocumento.getText());
-             sql = "insert into gestor (cedula,nombre,contraseña,correo) values ('"+cedula+"','"+nombre+"','"+contraseña+"','"+correo+"')";
-                System.out.println("entroo peeggasasd");
-            }
-            else {
-               cedula = Integer.parseInt(jTDocumento.getText());
-               codigo = Integer.parseInt(jTCodigo.getText()); 
-               sql = "insert into estudiante (nombre,correo,codigo,contraseña,cedula) values ('"+nombre+"','"+correo+"','"+codigo+"','"+contraseña+"','"+cedula+"')";
-            }
-            conexionBD con = new conexionBD();
-            MensajeConfirmacion nuevo = new MensajeConfirmacion();
-            nuevo.setVisible(true);
-            con.sentencia(sql);
+           
+             if (!jPasswordField1.getText().equals("") && !jTCorreo.getText().equals("") && !jTNombre.getText().equals("")){
+             int opciones = JOptionPane.showConfirmDialog(null,"¿Desea crear el usuario?");
 
-            jTCodigo.setText("");
-            jTContraseña.setText("");
-            jTNombre.setText("");
-            jTDocumento.setText("");
-            jTCorreo.setText("");
-            jREstudiante.setSelected(false);
-            jREstudiante.setEnabled(true);
-            jRGestor.setSelected(false);
-            jRGestor.setEnabled(true);
-            
-          }
-          catch (Exception ex) {
-            System.out.println("error aqui cuando presione el boton ");
-            MensajeCamposVacios mensaje = new MensajeCamposVacios();
-            mensaje.setVisible(true);
-        }
-        }
-        else{
-           MensajeMarcarOpcion nuevo = new MensajeMarcarOpcion();
-           nuevo.setVisible(true);
-       }
+               if (opciones ==JOptionPane.YES_OPTION){
 
+                    try{ 
+                    String sql="";
+                    int cedula;
+                    int codigo;
+                    String nombre = jTNombre.getText();
+                    String contraseña = jPasswordField1.getText();
+                    String correo = jTCorreo.getText();       
+            
+                        if (jRGestor.isSelected()){
+                             cedula = Integer.parseInt(jTDocumento.getText());
+                             sql = "insert into gestores (nombre,cedula,contraseña,email) values ('"+nombre+"','"+cedula+"','"+contraseña+"','"+correo+"')";
+                             System.out.println("entroo peeggasasd");
+                        }
+                        else {
+                             System.out.println("entro en opcion estudiante");
+                             cedula = Integer.parseInt(jTDocumento.getText());
+                             codigo = Integer.parseInt(jTCodigo.getText()); 
+                             sql = "insert into estudiante (nombre,cedula,contraseña,email,codigo) values ('"+nombre+"','"+cedula+"','"+contraseña+"','"+correo+"','"+codigo+"')";
+                        }
+                             conexionBD con = new conexionBD();
+                             con.sentencia(sql);
+
+                             jTCodigo.setText("");
+                             jPasswordField1.setText("");
+                             jTNombre.setText("");
+                             jTDocumento.setText("");
+                             jTCorreo.setText("");
+                             jREstudiante.setSelected(false);
+                             jREstudiante.setEnabled(true);
+                             jRGestor.setSelected(false);
+                             jRGestor.setEnabled(true);
+            
+                             JOptionPane.showMessageDialog(null,"se ha creado un nuevo usuario");
+                             Login_univalle loguear = null;
+                    try {
+                            loguear = new Login_univalle();
+                        } 
+                    catch (ClassNotFoundException ex) {
+                            Logger.getLogger(Registrar_usuarios_interfaz.class.getName()).log(Level.SEVERE, null, ex);
+                            ex.printStackTrace();
+                        }
+        
+                     loguear.setVisible(true);
+                     this.dispose();
+                        }
+          
+                    catch (Exception ex) {
+                       JOptionPane.showMessageDialog(null, "Los campos no deben de estar vacios");
+//                       ex.printStackTrace();
+                        }
+                }
+            }
+             else{
+                JOptionPane.showMessageDialog(null, "Los campos no deben de estar vacios");
+                 } 
+       
+      }
+             else{
+                JOptionPane.showMessageDialog(null, "Por favor seleccione si es estudiante o gestor ");
+                 }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTCodigoActionPerformed
+
+    private void jTDocumentoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTDocumentoKeyTyped
+        char n = evt.getKeyChar(); // KeyChar Obtiene o establece el carácter correspondiente a la tecla presionada.
+       
+       if(n<'0' || n>'9'){
+           evt.consume();
+       }
+    }//GEN-LAST:event_jTDocumentoKeyTyped
+
+    private void jTCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTCodigoKeyTyped
+       char n = evt.getKeyChar(); // KeyChar Obtiene o establece el carácter correspondiente a la tecla presionada.
+       if(n<'0' || n>'9'){
+           evt.consume();
+       }
+    }//GEN-LAST:event_jTCodigoKeyTyped
+
+    private void MostrarContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarContraActionPerformed
+       if(MostrarContra.isSelected()){
+           jPasswordField1.setEchoChar((char)0);
+       }
+       
+       else{
+           jPasswordField1.setEchoChar('●');
+       }
+    }//GEN-LAST:event_MostrarContraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,6 +445,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox MostrarContra;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -392,10 +457,10 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLtexto_superior;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JRadioButton jREstudiante;
     private javax.swing.JRadioButton jRGestor;
     private javax.swing.JTextField jTCodigo;
-    private javax.swing.JTextField jTContraseña;
     private javax.swing.JTextField jTCorreo;
     private javax.swing.JTextField jTDocumento;
     private javax.swing.JTextField jTNombre;
