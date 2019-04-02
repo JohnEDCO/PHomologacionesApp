@@ -6,6 +6,7 @@
 package homologaciones;
 
 import com.sun.awt.AWTUtilities;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.plaf.ColorUIResource;
 
 /**
  *
@@ -22,8 +24,9 @@ import javax.swing.UIManager;
 public class Login_univalle extends javax.swing.JFrame {
 
 
-    int x,y; //variables para el control de la posicion del login al mover con el mouse
-    int control;
+    private int x,y; //variables para el control de la posicion del login al mover con el mouse
+    private int control;
+    private String sql="";
     
     Connection con = null;
     PreparedStatement pst = null;
@@ -37,19 +40,26 @@ public class Login_univalle extends javax.swing.JFrame {
         AWTUtilities.setWindowOpaque(this, false);
         
         TextPrompt usuario = new TextPrompt(" Usuario", JTUsuario);
-        TextPrompt contraseña = new TextPrompt(" Contraseña", JTContraseña);
-       JTUsuario.setToolTipText("codigo si es estudiante o cedula si es gestor");
+        TextPrompt contraseña = new TextPrompt(" Contraseña", jTContraseña);
+        
+        JTUsuario.setToolTipText("codigo si es estudiante o cedula si es gestor");
+        
+        jLCerrar.setToolTipText("Cerrar programa");
     }
     
     public void Loguear() throws ClassNotFoundException{
        
-       String sql = "select * from login where usuario = ? and contraseña = ? ";
-       
+        UIManager UI=new UIManager(); // para cambiar el color de fondo de los JOptionpane
+        UI.put("OptionPane.background",Color.white);
+        UI.put("Panel.background",Color.white);  
+
+        
        try{
            pst = con.prepareStatement(sql);
+          
+           pst.setInt(1, Integer.parseInt(JTUsuario.getText())); // en el primer signo de pregunta se pone lo que hay en el jText
            
-           pst.setString(1, JTUsuario.getText()); // Aquí cambia Por los JText que haya creado, tanto user como pass
-           pst.setString(2, JTContraseña.getText());
+           pst.setString(2, jTContraseña.getText()); //  en el segundo signo de pregunta se pone lo que hay en el jText
            
            rs = pst.executeQuery();
            
@@ -57,21 +67,21 @@ public class Login_univalle extends javax.swing.JFrame {
 
                    Interfaz_principal interfazP = new Interfaz_principal();
                    interfazP.setValor(control);
+                   
                    this.dispose();
                    
                    interfazP.setVisible(true);
-                   
-                  // Login_univalle.this.setVisible(false);  
-                 
-   
+
            }else{
                
                JOptionPane.showMessageDialog(null, "usuario y contraseña inválidos");
            }
            
-       }catch(SQLException error){
+       }catch(Exception error){
        
-           JOptionPane.showMessageDialog(null, error);
+//         JOptionPane.showMessageDialog(null, error);
+           JOptionPane.showMessageDialog(null, "Verfique que todos los campos esten diligenciados");
+           
        
        }
        
@@ -87,7 +97,7 @@ public class Login_univalle extends javax.swing.JFrame {
     private void initComponents() {
 
         jLtexto_superior = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLCerrar = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
@@ -99,7 +109,7 @@ public class Login_univalle extends javax.swing.JFrame {
         jREstudiante = new javax.swing.JRadioButton();
         jRGestor = new javax.swing.JRadioButton();
         JTUsuario = new javax.swing.JTextField();
-        JTContraseña = new javax.swing.JTextField();
+        jTContraseña = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -122,14 +132,14 @@ public class Login_univalle extends javax.swing.JFrame {
         });
         getContentPane().add(jLtexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 220, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
+        jLCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                jLCerrarMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 10, -1, -1));
+        getContentPane().add(jLCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 10, -1, -1));
 
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
@@ -214,15 +224,15 @@ public class Login_univalle extends javax.swing.JFrame {
                 JTUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(JTUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 170, 250, 50));
-
-        JTContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        JTContraseña.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTContraseñaActionPerformed(evt);
+        JTUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                JTUsuarioKeyTyped(evt);
             }
         });
-        getContentPane().add(JTContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 270, 250, 50));
+        getContentPane().add(JTUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 170, 250, 50));
+
+        jTContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jTContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 270, 250, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login3.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1110, 720));
@@ -234,11 +244,13 @@ public class Login_univalle extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTUsuarioActionPerformed
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void jLCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCerrarMouseClicked
         // TODO add your handling code here:
+       int opcion = JOptionPane.showConfirmDialog(null,"¿Desea salir del programa?");
+       if(opcion ==JOptionPane.YES_OPTION) {
         System.exit(0);
-        
-    }//GEN-LAST:event_jLabel3MouseClicked
+       }
+    }//GEN-LAST:event_jLCerrarMouseClicked
 
     private void jLtexto_superiorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLtexto_superiorMousePressed
         // TODO add your handling code here:
@@ -252,18 +264,25 @@ public class Login_univalle extends javax.swing.JFrame {
     }//GEN-LAST:event_jLtexto_superiorMouseDragged
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-     if(control!=0){   
-        try {
-            Loguear();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Login_univalle.class.getName()).log(Level.SEVERE, null, ex);
+     
+     if ( !jTContraseña.getText().equals("") && !JTUsuario.getText().equals("")){
+         
+        if(control!=0){   
+           try {
+               Loguear();
+           } catch (ClassNotFoundException ex) {
+               Logger.getLogger(Login_univalle.class.getName()).log(Level.SEVERE, null, ex);
+              
+           }
         }
+        else{
+            JOptionPane.showMessageDialog(null, "Porfavor marque si es estudiante o gestor", "Mensaje informativo", JOptionPane.INFORMATION_MESSAGE);
+     }
      }
      else{
-         MensajeMarcarOpcion mensaje = new MensajeMarcarOpcion();
-         mensaje.setVisible(true);
+          JOptionPane.showMessageDialog(null, "Verifique que todos los campos esten diligenciados", "Mensaje informativo", JOptionPane.INFORMATION_MESSAGE);
+
      }
-        
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -280,6 +299,7 @@ public class Login_univalle extends javax.swing.JFrame {
         if (jREstudiante.isSelected()==true){
             jRGestor.setEnabled(false);
             control=1;
+            sql = "select * from estudiante where codigo = ? and contraseña = ? ";
         }
         else{
              jRGestor.setEnabled(true);
@@ -292,6 +312,7 @@ public class Login_univalle extends javax.swing.JFrame {
         if (jRGestor.isSelected()==true){
             jREstudiante.setEnabled(false);
             control=2;
+            sql = "select * from gestor where cedula = ? and contraseña = ? ";
         }
         else{
             jREstudiante.setEnabled(true);
@@ -309,9 +330,14 @@ public class Login_univalle extends javax.swing.JFrame {
      
     }//GEN-LAST:event_jRGestorMouseClicked
 
-    private void JTContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTContraseñaActionPerformed
+    private void JTUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JTUsuarioKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTContraseñaActionPerformed
+        char n = evt.getKeyChar(); // KeyChar Obtiene o establece el carácter correspondiente a la tecla presionada.
+       
+       if(n<'0' || n>'9'){
+           evt.consume();
+       }
+    }//GEN-LAST:event_JTUsuarioKeyTyped
 
     /**
      * @param args the command line arguments
@@ -359,20 +385,20 @@ public class Login_univalle extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField JTContraseña;
     private javax.swing.JTextField JTUsuario;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLCerrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLtexto_superior;
     private javax.swing.JRadioButton jREstudiante;
     private javax.swing.JRadioButton jRGestor;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPasswordField jTContraseña;
     // End of variables declaration//GEN-END:variables
 }

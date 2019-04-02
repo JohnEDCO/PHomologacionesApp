@@ -7,6 +7,7 @@ package homologaciones;
 
 import com.sun.awt.AWTUtilities;
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import rojerusan.RSNotifyAnimated;
 import rojerusan.RSNotifyFade;
@@ -23,9 +24,17 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
     int x,y;
     public Registrar_asignaturas_interfaz() {
         initComponents();
+        
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
+        
         jButton4.setToolTipText("Haga click aqui para registrar");
+        
+        jLCerrar.setToolTipText("Cerrar programa");
+        
+        UIManager UI=new UIManager(); // para cambiar el color de fondo de los JOptionpane
+        UI.put("OptionPane.background",Color.white);
+        UI.put("Panel.background",Color.white);  
     }
 
     /**
@@ -53,15 +62,12 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         jTCodigoA = new javax.swing.JTextField();
         jTNumCreditos = new javax.swing.JTextField();
         jTNombreA = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLCerrar = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jRSiHabilitable = new javax.swing.JRadioButton();
         jRInactivo = new javax.swing.JRadioButton();
         jRActivo = new javax.swing.JRadioButton();
-        jLabel7 = new javax.swing.JLabel();
         jRNoHabilitable = new javax.swing.JRadioButton();
         jLabel9 = new javax.swing.JLabel();
         jRSiValidable = new javax.swing.JRadioButton();
@@ -69,6 +75,9 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         jSeparator1 = new javax.swing.JSeparator();
         jRNoValidable = new javax.swing.JRadioButton();
         jButton4 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -198,42 +207,33 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         jTCodigoA.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTCodigoA.setBorder(null);
+        jTCodigoA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTCodigoA.setOpaque(false);
-        getContentPane().add(jTCodigoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 280, 210, 40));
+        getContentPane().add(jTCodigoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 240, 40));
 
         jTNumCreditos.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTNumCreditos.setBorder(null);
+        jTNumCreditos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTNumCreditos.setOpaque(false);
-        getContentPane().add(jTNumCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 210, 40));
-
-        jTNombreA.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jTNombreA.setBorder(null);
-        jTNombreA.setOpaque(false);
-        getContentPane().add(jTNombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 210, 210, 40));
-
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_texto.png"))); // NOI18N
-        jLabel3.setText("Nombre");
-        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 410, -1));
-
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_texto.png"))); // NOI18N
-        jLabel5.setText("Codigo");
-        jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 450, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+        jTNumCreditos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTNumCreditosKeyTyped(evt);
             }
         });
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
+        getContentPane().add(jTNumCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 240, 40));
+
+        jTNombreA.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTNombreA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTNombreA.setOpaque(false);
+        getContentPane().add(jTNombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 240, 40));
+
+        jLCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
+        jLCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLCerrarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
 
         jLabel8.setText("Habilitable");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, -1, -1));
@@ -267,13 +267,6 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
             }
         });
         getContentPane().add(jRActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 550, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_texto.png"))); // NOI18N
-        jLabel7.setText("N° Creditos");
-        jLabel7.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 340, 450, -1));
 
         jRNoHabilitable.setBackground(new java.awt.Color(255, 255, 255));
         jRNoHabilitable.setText("No");
@@ -322,6 +315,15 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, -1, -1));
 
+        jLabel2.setText("Nombre ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, -1, -1));
+
+        jLabel3.setText("Codigo");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, -1, -1));
+
+        jLabel5.setText("N° creditos");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, -1, -1));
+
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, -1));
 
@@ -364,10 +366,13 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         y=evt.getY();
     }//GEN-LAST:event_jLTexto_superiorMousePressed
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void jLCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCerrarMouseClicked
         // TODO add your handling code here:
+        int opcion = JOptionPane.showConfirmDialog(null,"¿Desea salir del programa?");
+       if(opcion ==JOptionPane.YES_OPTION) {
         System.exit(0);
-    }//GEN-LAST:event_jLabel2MouseClicked
+       };
+    }//GEN-LAST:event_jLCerrarMouseClicked
 
     private void jRNoHabilitableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRNoHabilitableActionPerformed
         // TODO add your handling code here:
@@ -415,6 +420,8 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        System.out.println("seleccion "+ jRActivo.isSelected());
+     if(!jTNombreA.getText().equals("") && !jTCodigoA.getText().equals("") && (jRActivo.isSelected()!=false || jRInactivo.isEnabled()!=false) && (jRNoHabilitable.isSelected()!=false ||jRSiHabilitable.isSelected()!=false) && (jRNoValidable.isSelected()!=false || jRSiValidable.isSelected()!=false) &&(jRActivo.isSelected()!=false || jRInactivo.isSelected()!=false) ){ 
         try {     
             String nombreA = jTNombreA.getText();
             String codigoA = jTCodigoA.getText();
@@ -442,17 +449,18 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
             jTNumCreditos.setText("");
             
             con.sentencia(sql);
-            MensajeConfirmacion mensaje = new MensajeConfirmacion();
-            mensaje.setVisible(true);
-            
-            new rojerusan.RSNotifyFade("Enhorabuena", "se registro exitosamente la asignatura", 4, RSNotifyFade.PositionNotify.BottomRight, RSNotifyFade.TypeNotify.SUCCESS).setVisible(true);
-            
+           
+                       
         } catch (Exception ex) {
             
             System.out.println("error aqui cuando presione el boton ");
-            MensajeCamposVacios mensaje = new MensajeCamposVacios();
-            mensaje.setVisible(true);
+            JOptionPane.showMessageDialog(null, "Verifique que los campos no esten vacios","Campos vacios" ,JOptionPane.INFORMATION_MESSAGE);
+
         }
+     }
+     else{
+         JOptionPane.showMessageDialog(null, "Verifique que los campos no esten vacios","Campos vacios" ,JOptionPane.INFORMATION_MESSAGE);
+     }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jRInactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRInactivoActionPerformed
@@ -474,6 +482,15 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
             jRInactivo.setEnabled(true);
         }
     }//GEN-LAST:event_jRActivoActionPerformed
+
+    private void jTNumCreditosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNumCreditosKeyTyped
+        // TODO add your handling code here:
+         char n = evt.getKeyChar(); // KeyChar Obtiene o establece el carácter correspondiente a la tecla presionada.
+       
+       if(n<'0' || n>'9'){
+           evt.consume();
+       }
+    }//GEN-LAST:event_jTNumCreditosKeyTyped
 
     /**
      * @param args the command line arguments
@@ -524,6 +541,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JLabel jLCerrar;
     private javax.swing.JLabel jLTexto_superior;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -532,7 +550,6 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRActivo;

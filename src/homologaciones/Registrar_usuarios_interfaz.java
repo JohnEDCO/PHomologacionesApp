@@ -33,6 +33,8 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         TextPrompt cont = new TextPrompt("Contraseña",jPasswordField1);
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
+        
+        jLCerrar.setToolTipText("Cerrar programa");
     }
     
     /**
@@ -45,7 +47,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         jLtexto_superior = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLCerrar = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
@@ -84,14 +86,14 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jLtexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 170, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
+        jLCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                jLCerrarMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
+        getContentPane().add(jLCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
 
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
@@ -106,7 +108,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 590, 170, 60));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 600, 170, 60));
 
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
@@ -121,7 +123,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 590, 170, 60));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 600, 170, 60));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("Desarrollado por @Equipo Integrador");
@@ -172,7 +174,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jTCodigoKeyTyped(evt);
             }
         });
-        getContentPane().add(jTCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 520, 230, 40));
+        getContentPane().add(jTCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 530, 230, 40));
 
         jTDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +194,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jTCorreoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 230, 40));
+        getContentPane().add(jTCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 230, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo nombre2.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 190, -1, -1));
@@ -204,10 +206,10 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 270, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo ema.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 430, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 450, -1, -1));
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo cod2.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 500, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, -1, -1));
 
         MostrarContra.setBackground(new java.awt.Color(255, 255, 255));
         MostrarContra.setText("Mostrar Contraseña");
@@ -235,11 +237,14 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         y=evt.getY();
     }//GEN-LAST:event_jLtexto_superiorMousePressed
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void jLCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCerrarMouseClicked
         // TODO add your handling code here:
+       int opcion = JOptionPane.showConfirmDialog(null,"¿Desea salir del programa?");
+       if(opcion ==JOptionPane.YES_OPTION) {
         System.exit(0);
+       }
 
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_jLCerrarMouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -310,6 +315,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         if(control != 0){
            
              if (!jPasswordField1.getText().equals("") && !jTCorreo.getText().equals("") && !jTNombre.getText().equals("")){
+                 
              int opciones = JOptionPane.showConfirmDialog(null,"¿Desea crear el usuario?");
 
                if (opciones ==JOptionPane.YES_OPTION){
@@ -324,7 +330,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
             
                         if (jRGestor.isSelected()){
                              cedula = Integer.parseInt(jTDocumento.getText());
-                             sql = "insert into gestores (nombre,cedula,contraseña,email) values ('"+nombre+"','"+cedula+"','"+contraseña+"','"+correo+"')";
+                             sql = "insert into gestor (nombre,cedula,contraseña,correo) values ('"+nombre+"','"+cedula+"','"+contraseña+"','"+correo+"')";
                              System.out.println("entroo peeggasasd");
                         }
                         else {
@@ -361,7 +367,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                         }
           
                     catch (Exception ex) {
-                       JOptionPane.showMessageDialog(null, "Los campos no deben de estar vacios");
+                       JOptionPane.showMessageDialog(null, "Los campos no deben de estar vacios ");
 //                       ex.printStackTrace();
                         }
                 }
@@ -449,10 +455,10 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
     private javax.swing.JCheckBox MostrarContra;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLCerrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
