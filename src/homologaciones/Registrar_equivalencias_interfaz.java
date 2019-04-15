@@ -46,6 +46,7 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
                 String dato = auxiliar[j];
                 
                 jComboBox1.addItem(dato);
+                
             }
         }
     }
