@@ -7,8 +7,11 @@ package homologaciones;
 
 import com.sun.awt.AWTUtilities;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,11 +23,31 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
      * Creates new form Registrar_equivalencias_interfaz
      */
     int x,y;
-    
+    conexionBD conexion = new conexionBD();
+
     public Registrar_equivalencias_interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
+        
+       
+         String sql1 = "Select codigoAsignatura From Asignaturas";
+        ArrayList<String[]> datos = conexion.consulta(sql1);
+        
+         jComboBox1.removeAllItems();
+
+        for(int i=0; i<datos.size(); i++){           
+            System.out.println("fila: " + datos.get(i).toString());
+            
+            String [] auxiliar =datos.get(i); // me trae el primer arreglo del arraylist en esta variable auxiliar
+            
+            for (int j = 0; j < auxiliar.length; j++) {
+                
+                String dato = auxiliar[j];
+                
+                jComboBox1.addItem(dato);
+            }
+        }
     }
 
     /**
@@ -50,6 +73,7 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         jSeparator8 = new javax.swing.JSeparator();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
 
@@ -188,6 +212,14 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, -1, -1));
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 190, 40));
+
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, -1));
 
@@ -245,6 +277,11 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -292,6 +329,7 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLCerrar;
     private javax.swing.JLabel jLTexto_superior;
     private javax.swing.JLabel jLabel1;
