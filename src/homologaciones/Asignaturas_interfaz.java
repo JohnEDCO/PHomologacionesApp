@@ -6,6 +6,7 @@
 package homologaciones;
 
 import com.sun.awt.AWTUtilities;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
 /**
@@ -35,7 +36,7 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
         
-       
+       jLCerrar.setToolTipText("Cerrar programa");
     }
     
     /**
@@ -61,7 +62,7 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jBRegistrarA = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        jLCerrar = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
@@ -205,14 +206,14 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jBRegistrarA, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 230, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
+        jLCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                jLCerrarMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
+        getContentPane().add(jLCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton_consultar.png"))); // NOI18N
         jButton8.setText("Consultar ");
@@ -266,10 +267,13 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLTexto_superiorMousePressed
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void jLCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCerrarMouseClicked
         // TODO add your handling code here:
+        int opcion = JOptionPane.showConfirmDialog(null,"¿Desea salir del programa?");
+       if(opcion ==JOptionPane.YES_OPTION) {
         System.exit(0);
-    }//GEN-LAST:event_jLabel2MouseClicked
+       }
+    }//GEN-LAST:event_jLCerrarMouseClicked
 
     private void jBRegistrarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarAActionPerformed
         // TODO add your handling code here:
@@ -338,9 +342,9 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton8;
+    private javax.swing.JLabel jLCerrar;
     private javax.swing.JLabel jLTexto_superior;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator2;

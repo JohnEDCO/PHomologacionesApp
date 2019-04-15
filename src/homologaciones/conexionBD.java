@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import rojerusan.RSNotifyFade;
 
 /**
  *
@@ -120,6 +121,9 @@ public class conexionBD {
             System.out.println("\nCantidad de registros afectados : " + registros);
             System.out.println("------------------------------------------------- \n");
             pst.close(); //Libero datos del PreparedStatement, tambien se libera ResultSet
+            
+             new rojerusan.RSNotifyFade("Enhorabuena", "¡La operacion se realizo exitosamente!", 5, RSNotifyFade.PositionNotify.BottomRight, RSNotifyFade.TypeNotify.SUCCESS).setVisible(true);
+
         } catch (SQLException e) {
             e.printStackTrace(); // Capturo la excepcion en caso de error
         }
