@@ -8,10 +8,12 @@ package homologaciones;
 import com.sun.awt.AWTUtilities;
 import java.awt.Font;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -24,33 +26,75 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
      */
     int x,y;
     conexionBD conexion = new conexionBD();
-
+    int control;
+    int datoUsuario; // aqui se guarda el codigo del estudiante que inicio sesion, codigo de origen
+    int datoCod=0; // aqui se guarda el dato del codigo de estudiante destino
+    int datoSeleccion = 0; // aqui se guarda el dato que se selecciono en el combobox de programa destino
+    
     public Registrar_equivalencias_interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
-        AWTUtilities.setWindowOpaque(this, false);
+        AWTUtilities.setWindowOpaque(this, false); 
+        jTablePrecargar.setToolTipText("Materias que pueden ser homologadas");
         
-       
-         String sql1 = "Select codigoAsignatura From Asignaturas";
-        ArrayList<String[]> datos = conexion.consulta(sql1);
+        jBPrecargar.setEnabled(false);
+        jTextFCodigoDestino.setEnabled(false);
+        jTextFCodigoOrigen.setEnabled(false);
         
-         jComboBox1.removeAllItems();
 
-        for(int i=0; i<datos.size(); i++){           
-            System.out.println("fila: " + datos.get(i).toString());
+    }
+    public void setControl(int controlP,int dato) {
+        
+            datoUsuario=dato;
+            control=controlP;        
+        
+        String sql1 = "Select B.codPrograma, B.nombre From ficha A, programa B where A.codFicha='"+datoUsuario+"' and A.codPrograma = B.codPrograma";
+        String sql2 = "select A.codPrograma, C.nombre from ficha A ,programa C where A.codPrograma = C.codPrograma and A.cedula=(select cedula from ficha where codficha='"+datoUsuario+"') and A.codFicha not in(select B.codFicha from asignaturaFicha B)"; //consulta para traer los programas en los que sta matriculado la persona que quiere hacer la equivalencia
+        
+        ArrayList<String[]> datos1 = conexion.consulta(sql1);
+        ArrayList<String[]> datos2 = conexion.consulta(sql2);
+        
+         jCProgramaOrigen.removeAllItems();
+         jCProgramaDestino.removeAllItems();
+         
+
+         jCProgramaDestino.addItem("        Programa destino");
+         jTextFCodigoOrigen.setText(String.valueOf(datoUsuario));
+         
+        for(int i=0; i<datos1.size(); i++){           
+            System.out.println("fila: " + datos1.get(i).toString());
             
-            String [] auxiliar =datos.get(i); // me trae el primer arreglo del arraylist en esta variable auxiliar
-            
+            String [] auxiliar =datos1.get(i); // me trae el primer arreglo del arraylist en esta variable auxiliar
+            String d="";
             for (int j = 0; j < auxiliar.length; j++) {
                 
-                String dato = auxiliar[j];
-                
-                jComboBox1.addItem(dato);
+                String dato1 = auxiliar[j];
+                d+=auxiliar[j]+"-";
                 
             }
+              jCProgramaOrigen.addItem(d);
         }
-    }
+        // for para traer los programas en los que esta matriculado el estudiante
+         for(int i=0; i<datos2.size(); i++){           
+            System.out.println("fila: " + datos2.get(i).toString());
+            
+            String [] auxiliar1 =datos2.get(i); // me trae el primer arreglo del arraylist en esta variable auxiliar
+            String d="";
+            for (int j = 0; j < auxiliar1.length; j++) {
+                
 
+                if(j!=(auxiliar1.length-1)){
+                  
+                    d+=auxiliar1[j];
+                }
+                else{
+                     d+="-"+auxiliar1[j];
+                }
+              
+            }
+              jCProgramaDestino.addItem(d);
+        }
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,6 +104,7 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -74,7 +119,19 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         jSeparator8 = new javax.swing.JSeparator();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jCProgramaOrigen = new javax.swing.JComboBox<>();
+        jCProgramaDestino = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFCodigoDestino = new javax.swing.JTextField();
+        jTextFCodigoOrigen = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTablePrecargar = new javax.swing.JTable();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jBPrecargar = new javax.swing.JButton();
+        jBDescartar = new javax.swing.JButton();
+        jBCancelarSolicitud = new javax.swing.JButton();
+        jBEnviarSolicitud = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
 
@@ -89,7 +146,7 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoUnivalle.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         jButton1.setText("Programas");
@@ -109,7 +166,7 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 40, 60));
 
-        jLTexto_superior.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        jLTexto_superior.setFont(new java.awt.Font("Open Sans", 0, 30)); // NOI18N
         jLTexto_superior.setForeground(new java.awt.Color(255, 0, 0));
         jLTexto_superior.setText("UNIVERSIDAD DEL VALLE");
         jLTexto_superior.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
@@ -129,7 +186,7 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 100, 40, 60));
 
-        jButton2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         jButton2.setText("Facultades");
@@ -158,7 +215,7 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jLCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
 
-        jButton3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         jButton3.setText("Asignaturas");
@@ -197,7 +254,7 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 100, -1, -1));
 
-        jButton5.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         jButton5.setText("Equivalencias");
@@ -213,13 +270,133 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jCProgramaOrigen.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jCProgramaOrigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jCProgramaOrigenActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 190, 40));
+        getContentPane().add(jCProgramaOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 290, 40));
+
+        jCProgramaDestino.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jCProgramaDestino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCProgramaDestinoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jCProgramaDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, 310, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/flecha.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, -1, -1));
+
+        jTextFCodigoDestino.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jTextFCodigoDestino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFCodigoDestinoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFCodigoDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 280, 170, -1));
+
+        jTextFCodigoOrigen.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jTextFCodigoOrigen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFCodigoOrigenActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextFCodigoOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 280, 170, -1));
+
+        jTablePrecargar.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jTablePrecargar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Nombre", "Nota"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTablePrecargar);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 850, 200));
+
+        jLabel5.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jLabel5.setText("Codigo Destino");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jLabel3.setText("Codigo origen");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 280, -1, -1));
+
+        jBPrecargar.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jBPrecargar.setForeground(new java.awt.Color(255, 255, 255));
+        jBPrecargar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2_colorMarca.png"))); // NOI18N
+        jBPrecargar.setText("Precargar materias");
+        jBPrecargar.setBorder(null);
+        jBPrecargar.setBorderPainted(false);
+        jBPrecargar.setContentAreaFilled(false);
+        jBPrecargar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBPrecargar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBPrecargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBPrecargarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBPrecargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 170, 40));
+
+        jBDescartar.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jBDescartar.setForeground(new java.awt.Color(255, 255, 255));
+        jBDescartar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2_colorMarca.png"))); // NOI18N
+        jBDescartar.setText("Descartar");
+        jBDescartar.setBorder(null);
+        jBDescartar.setBorderPainted(false);
+        jBDescartar.setContentAreaFilled(false);
+        jBDescartar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBDescartar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBDescartar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDescartarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBDescartar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 120, 40));
+
+        jBCancelarSolicitud.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jBCancelarSolicitud.setForeground(new java.awt.Color(255, 255, 255));
+        jBCancelarSolicitud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2_colorMarca.png"))); // NOI18N
+        jBCancelarSolicitud.setText("Cancelar Solicitud");
+        jBCancelarSolicitud.setBorder(null);
+        jBCancelarSolicitud.setBorderPainted(false);
+        jBCancelarSolicitud.setContentAreaFilled(false);
+        jBCancelarSolicitud.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBCancelarSolicitud.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBCancelarSolicitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarSolicitudActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBCancelarSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 640, 200, 50));
+
+        jBEnviarSolicitud.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jBEnviarSolicitud.setForeground(new java.awt.Color(255, 255, 255));
+        jBEnviarSolicitud.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2_colorMarca.png"))); // NOI18N
+        jBEnviarSolicitud.setText("Enviar Solicitud");
+        jBEnviarSolicitud.setBorder(null);
+        jBEnviarSolicitud.setBorderPainted(false);
+        jBEnviarSolicitud.setContentAreaFilled(false);
+        jBEnviarSolicitud.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBEnviarSolicitud.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBEnviarSolicitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEnviarSolicitudActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBEnviarSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 640, 200, 50));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, -1));
@@ -262,9 +439,9 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-       Asignaturas_interfaz asignaturas ;
-
+         Asignaturas_interfaz asignaturas ;
         asignaturas = new Asignaturas_interfaz();
+        asignaturas.setControl(control, datoUsuario);
         this.dispose();
         asignaturas.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -275,13 +452,214 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+      if(jTablePrecargar.getRowCount()!=0){
+          
+        int opcion = JOptionPane.showConfirmDialog(null,"Los cambios en esta ventana se perderan si se sale. ¿Desea continuar?");
+              if(opcion ==JOptionPane.YES_OPTION) {
+                 Equivalencias_interfaz equivalencia;
+                 equivalencia = new Equivalencias_interfaz();
+                 equivalencia.setControl(control, datoUsuario);
+                 this.dispose();
+                 equivalencia.setVisible(true);
+              }
+     }
+     else{
+           Equivalencias_interfaz equivalencia;
+           equivalencia = new Equivalencias_interfaz();
+           equivalencia.setControl(control, datoUsuario);
+           this.dispose();
+           equivalencia.setVisible(true);
+      }
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void jCProgramaOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCProgramaOrigenActionPerformed
         // TODO add your handling code here:
+  
+    }//GEN-LAST:event_jCProgramaOrigenActionPerformed
+
+    private void jCProgramaDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCProgramaDestinoActionPerformed
+        // TODO add your handling code here:
+        if(jCProgramaDestino.getSelectedIndex()!=-1 && jCProgramaDestino.getSelectedIndex()!=0){
+            
+            jBPrecargar.setEnabled(true);
+
+//----------------------------------------------------------------------------------------------------------------            
+         System.out.println("gtt: "+jCProgramaDestino.getSelectedIndex()+jCProgramaDestino.getSelectedItem());
+        String seleccionCombo =null;
+        String [] separaCadenaSeleccion=null;
+       
+        
+            seleccionCombo= (String) jCProgramaDestino.getSelectedItem();
+            
+           separaCadenaSeleccion=seleccionCombo.split("-");
+        
+        for (int i = 0; i < separaCadenaSeleccion.length; i++) {
+            
+             datoSeleccion = Integer.parseInt(separaCadenaSeleccion[i]);
+             break;
+        }
+//-----------------------------------------------------------------------------------------------------------        
+        System.out.println("muestro: "+ datoSeleccion);
+        
+        String sql="select codFicha from ficha where codPrograma ='"+datoSeleccion+"' and cedula=(select cedula from ficha where codFicha='"+datoUsuario+"') ";
+
+        ArrayList<String[]> datos = conexion.consulta(sql);
+        
+        for(int i=0; i<datos.size(); i++){           
+            
+            String [] auxiliar =datos.get(i); // me trae el primer arreglo del arraylist en esta variable auxiliar
+            String codigoFicha= auxiliar[i];
+            
+            jTextFCodigoDestino.setText(codigoFicha);
+            break;
+        }
+        }
+        else{
+             jBPrecargar.setEnabled(false);
+        }
+       
+    }//GEN-LAST:event_jCProgramaDestinoActionPerformed
+
+    private void jTextFCodigoOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFCodigoOrigenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFCodigoOrigenActionPerformed
+
+    private void jTextFCodigoDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFCodigoDestinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFCodigoDestinoActionPerformed
+
+    private void jBEnviarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEnviarSolicitudActionPerformed
+        // TODO add your handling code here:
+       
+             System.out.println("bbbbbbb: "+datoSeleccion);
+     int opcion = JOptionPane.showConfirmDialog(null,"¿Desea enviar y cargar la solicitud?");
      
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+       if(opcion ==JOptionPane.YES_OPTION) {
+        
+        Calendar fecha= new GregorianCalendar();  
+        String fechaActual=fecha.get(Calendar.DATE)+ "-"+(fecha.get(Calendar.MONTH)+1)+"-"+fecha.get(Calendar.YEAR);
+        
+        int maximo=0;
+        String nombrePersona="";
+        
+        String sql1="select max (numSolicitud) from solicitud ";
+        ArrayList<String[]> datos1 = conexion.consulta(sql1);
+        
+        String sql2="select B.nombre from ficha A, estudiante B where A.codFicha='"+datoUsuario+"' and A.cedula = B.cedula "; // sentencia apra obetner el nombe de la persona que hace la solicitud
+        ArrayList<String[]> datos2 = conexion.consulta(sql2);
+        
+        // for para la primera consulta
+        for(int i=0; i<datos1.size(); i++){           
+            System.out.println("fila: " + datos1.get(i).toString());
+            
+            String [] auxiliar =datos1.get(i); // me trae el primer arreglo del arraylist en esta variable auxiliar
+            if(auxiliar[i]!=null){
+            maximo= (Integer.parseInt(auxiliar[i])+1);
+            }
+            else{
+                maximo++;
+            }
+            System.out.println("maximo= "+maximo);
+        }
+        // for para la segunda consulta
+         for(int i=0; i<datos2.size(); i++){           
+            System.out.println("fila: " + datos2.get(i).toString());
+            
+            String [] auxiliar =datos2.get(i); // me trae el primer arreglo del arraylist en esta variable auxiliar
+            nombrePersona=auxiliar[i];
+        }
+         System.out.println("uuuuuuuu: "+nombrePersona);
+       
+       //para agregar la solicitdud
+       String sql3="insert into solicitud (estado,codFicha,nombre,fecha,codProgramaDestino) values('Pendiente','"+datoUsuario+"','"+nombrePersona+"', '"+fechaActual+"', '"+datoSeleccion+"') ";
+        conexion.sentencia(sql3);
+        
+        String sql4="insert into solicitudDetalle (numSolicitud,codAsignatura,nombre,nota) values";
+        
+        //para agregar la solicitud detalle
+         for (int i = 0; i < jTablePrecargar.getRowCount(); i++) {
+             System.out.println("i= "+ i);
+             
+            for (int j = 0; j < jTablePrecargar.getColumnCount(); j++) {
+                           
+
+                if(j==0){
+                 sql4+="('"+maximo+"'"+", "+"'"+jTablePrecargar.getValueAt(i, j)+"'";
+                }
+                else if(i==(jTablePrecargar.getRowCount()-1) && j==(jTablePrecargar.getColumnCount()-1)){
+                    sql4+=", "+"'"+jTablePrecargar.getValueAt(i, j)+"'"+ ")";
+                }
+                else if(j==(jTablePrecargar.getColumnCount()-1)){
+                    sql4+=", "+"'"+jTablePrecargar.getValueAt(i, j)+"'"+ "),";
+                }
+                else{
+                    sql4+=","+"'"+jTablePrecargar.getValueAt(i, j)+"'";
+                }
+                  System.out.println("j= "+ i);
+            }
+            
+            
+        }
+         
+//         System.out.println("sql final: "+ sql4);
+         conexion.sentencia(sql4);
+         
+           DefaultTableModel modelo = (DefaultTableModel) jTablePrecargar.getModel();
+            while(modelo.getRowCount()>0)modelo.removeRow(0);
+ 
+     
+        
+       } 
+    }//GEN-LAST:event_jBEnviarSolicitudActionPerformed
+
+    private void jBCancelarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarSolicitudActionPerformed
+        // TODO add your handling code here:
+         int opcion = JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea cancelar la solicitud?");
+              if(opcion ==JOptionPane.YES_OPTION) {
+                  
+                 Equivalencias_interfaz equivalencia;
+                 equivalencia = new Equivalencias_interfaz();
+                 equivalencia.setControl(control, datoUsuario);
+                 this.dispose();
+                 equivalencia.setVisible(true);
+              }
+    }//GEN-LAST:event_jBCancelarSolicitudActionPerformed
+
+    private void jBPrecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPrecargarActionPerformed
+        // TODO add your handling code here:
+        String sql = "select  A.codAsignatura, C.nombre, A.nota from asignaturaFicha A, programaAsignatura B, asignatura C where A.codAsignatura=B.codAsignatura and A.codAsignatura=C.codAsignatura and A.nota>=3.0 and A.codFicha='"+datoUsuario+"' and B.codPrograma='"+datoSeleccion+"' and A.codAsignatura not in (select codAsignatura from solicitudDetalle where codFicha=1667658)";
+        ArrayList<String[]> datos = null;
+        
+        datos = conexion.consulta(sql);
+        DefaultTableModel modelo = (DefaultTableModel)jTablePrecargar.getModel();
+     
+        while(modelo.getRowCount() > 0){
+            modelo.removeRow(0);
+        }
+        for(String[] fila : datos){           
+            modelo.addRow(fila);
+        
+       }
+    }//GEN-LAST:event_jBPrecargarActionPerformed
+
+    private void jBDescartarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDescartarActionPerformed
+        // TODO add your handling code here:
+              try{
+        int filaSel = jTablePrecargar.getSelectedRow();
+        
+        DefaultTableModel modelo = (DefaultTableModel)jTablePrecargar.getModel();
+        
+        String id = (String)modelo.getValueAt(filaSel,0);
+        
+         modelo.removeRow(filaSel);
+         System.out.println("Sid"+id);
+;  
+               }
+        catch(Exception a1){
+        JOptionPane.showMessageDialog(this,"\"Debe seleccionar una fila de la consulta primero \nantes de eliminar\"");
+        }
+    }//GEN-LAST:event_jBDescartarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,22 +703,35 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBCancelarSolicitud;
+    private javax.swing.JButton jBDescartar;
+    private javax.swing.JButton jBEnviarSolicitud;
+    private javax.swing.JButton jBPrecargar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jCProgramaDestino;
+    private javax.swing.JComboBox<String> jCProgramaOrigen;
     private javax.swing.JLabel jLCerrar;
     private javax.swing.JLabel jLTexto_superior;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JTable jTablePrecargar;
+    private javax.swing.JTextField jTextFCodigoDestino;
+    private javax.swing.JTextField jTextFCodigoOrigen;
     // End of variables declaration//GEN-END:variables
 }

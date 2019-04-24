@@ -19,12 +19,20 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
      * Creates new form Equivalencias_interfaz
      */
     int x,y;
+    int control;
+    int datoUsuario;
     public Equivalencias_interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
     }
-
+    public void setControl(int controlP,int dato) {
+        datoUsuario=dato;
+        control=controlP;
+        if(control==2){
+           jBRegistrarEquivalencia.setVisible(false);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,7 +55,7 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
         jLTexto_superior = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jBRegistrarA = new javax.swing.JButton();
+        jBRegistrarEquivalencia = new javax.swing.JButton();
         jLCerrar = new javax.swing.JLabel();
         jButton8 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
@@ -60,7 +68,7 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 40, 60));
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         jButton1.setText("Programas");
@@ -88,7 +96,7 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 40, 60));
 
-        jButton5.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         jButton5.setText("Equivalencias");
@@ -104,7 +112,7 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, -1, -1));
 
-        jButton3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         jButton3.setText("Asignaturas");
@@ -140,7 +148,7 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 100, 40, 60));
 
-        jButton2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         jButton2.setText("Facultades");
@@ -156,7 +164,7 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
 
-        jLTexto_superior.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        jLTexto_superior.setFont(new java.awt.Font("Open Sans", 0, 30)); // NOI18N
         jLTexto_superior.setForeground(new java.awt.Color(255, 0, 0));
         jLTexto_superior.setText("UNIVERSIDAD DEL VALLE");
         jLTexto_superior.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
@@ -170,7 +178,7 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
                 jLTexto_superiorMousePressed(evt);
             }
         });
-        getContentPane().add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
+        getContentPane().add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 100, 110, -1));
@@ -178,19 +186,20 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoUnivalle.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jBRegistrarA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton_agregar.png"))); // NOI18N
-        jBRegistrarA.setText("     Solicitar equivalencia");
-        jBRegistrarA.setBorder(null);
-        jBRegistrarA.setBorderPainted(false);
-        jBRegistrarA.setContentAreaFilled(false);
-        jBRegistrarA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jBRegistrarA.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBRegistrarA.addActionListener(new java.awt.event.ActionListener() {
+        jBRegistrarEquivalencia.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jBRegistrarEquivalencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton_agregar.png"))); // NOI18N
+        jBRegistrarEquivalencia.setText("     Solicitar equivalencia");
+        jBRegistrarEquivalencia.setBorder(null);
+        jBRegistrarEquivalencia.setBorderPainted(false);
+        jBRegistrarEquivalencia.setContentAreaFilled(false);
+        jBRegistrarEquivalencia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBRegistrarEquivalencia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBRegistrarEquivalencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBRegistrarAActionPerformed(evt);
+                jBRegistrarEquivalenciaActionPerformed(evt);
             }
         });
-        getContentPane().add(jBRegistrarA, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 230, -1));
+        getContentPane().add(jBRegistrarEquivalencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 230, -1));
 
         jLCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
         jLCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -201,6 +210,7 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jLCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
 
+        jButton8.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton_consultar.png"))); // NOI18N
         jButton8.setText("       Consultar solicitudes  ");
         jButton8.setBorder(null);
@@ -232,8 +242,8 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         Asignaturas_interfaz asignaturas ;
-
         asignaturas = new Asignaturas_interfaz();
+        asignaturas.setControl(control,datoUsuario);
         this.dispose();
         asignaturas.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -258,10 +268,14 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLTexto_superiorMousePressed
 
-    private void jBRegistrarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarAActionPerformed
+    private void jBRegistrarEquivalenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarEquivalenciaActionPerformed
         // TODO add your handling code here:
+        Registrar_equivalencias_interfaz reg = new Registrar_equivalencias_interfaz();
+        reg.setControl(control,datoUsuario);
+        this.dispose();
+        reg.setVisible(true);
       
-    }//GEN-LAST:event_jBRegistrarAActionPerformed
+    }//GEN-LAST:event_jBRegistrarEquivalenciaActionPerformed
 
     private void jLCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCerrarMouseClicked
         // TODO add your handling code here:
@@ -273,6 +287,10 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        Consultar_solicitudes_equivalencia consultar = new Consultar_solicitudes_equivalencia();
+        consultar.setControl(control, datoUsuario);
+        this.dispose();
+        consultar.setVisible(true);
        
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -318,7 +336,7 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBRegistrarA;
+    private javax.swing.JButton jBRegistrarEquivalencia;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -336,4 +354,6 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     // End of variables declaration//GEN-END:variables
+
+    
 }

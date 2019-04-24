@@ -88,7 +88,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 40, 60));
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         jButton1.setText("Programas");
@@ -116,7 +116,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 40, 60));
 
-        jButton5.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton5.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton5.setForeground(new java.awt.Color(255, 255, 255));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         jButton5.setText("Equivalencias");
@@ -132,7 +132,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, -1, -1));
 
-        jButton3.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton3.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         jButton3.setText("Asignaturas");
@@ -168,7 +168,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 100, 40, 60));
 
-        jButton2.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jButton2.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         jButton2.setText("Facultades");
@@ -184,7 +184,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
 
-        jLTexto_superior.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        jLTexto_superior.setFont(new java.awt.Font("Open Sans", 0, 30)); // NOI18N
         jLTexto_superior.setForeground(new java.awt.Color(255, 0, 0));
         jLTexto_superior.setText("UNIVERSIDAD DEL VALLE");
         jLTexto_superior.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
@@ -206,12 +206,12 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoUnivalle.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
-        jTCodigoA.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTCodigoA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTCodigoA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTCodigoA.setOpaque(false);
         getContentPane().add(jTCodigoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 240, 40));
 
-        jTNumCreditos.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTNumCreditos.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTNumCreditos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTNumCreditos.setOpaque(false);
         jTNumCreditos.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -221,7 +221,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         });
         getContentPane().add(jTNumCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 240, 40));
 
-        jTNombreA.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        jTNombreA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTNombreA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTNombreA.setOpaque(false);
         getContentPane().add(jTNombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 240, 40));
@@ -235,13 +235,16 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         });
         getContentPane().add(jLCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel8.setText("Habilitable");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, -1, -1));
 
+        jLabel10.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel10.setText("Estado");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 550, -1, -1));
 
         jRSiHabilitable.setBackground(new java.awt.Color(255, 255, 255));
+        jRSiHabilitable.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jRSiHabilitable.setText("Si");
         jRSiHabilitable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,6 +254,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         getContentPane().add(jRSiHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 440, -1, -1));
 
         jRInactivo.setBackground(new java.awt.Color(255, 255, 255));
+        jRInactivo.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jRInactivo.setText("Inactivo");
         jRInactivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,6 +264,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         getContentPane().add(jRInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 550, -1, -1));
 
         jRActivo.setBackground(new java.awt.Color(255, 255, 255));
+        jRActivo.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jRActivo.setText("Activo");
         jRActivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,6 +274,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         getContentPane().add(jRActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 550, -1, -1));
 
         jRNoHabilitable.setBackground(new java.awt.Color(255, 255, 255));
+        jRNoHabilitable.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jRNoHabilitable.setText("No");
         jRNoHabilitable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,10 +283,12 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         });
         getContentPane().add(jRNoHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, -1, -1));
 
+        jLabel9.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel9.setText("Validable");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, -1, -1));
 
         jRSiValidable.setBackground(new java.awt.Color(255, 255, 255));
+        jRSiValidable.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jRSiValidable.setText("Si");
         jRSiValidable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -292,6 +300,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 410, 430, 30));
 
         jRNoValidable.setBackground(new java.awt.Color(255, 255, 255));
+        jRNoValidable.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jRNoValidable.setText("No");
         jRNoValidable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,8 +309,9 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         });
         getContentPane().add(jRNoValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 500, -1, -1));
 
+        jButton4.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2_colorMarca.png"))); // NOI18N
         jButton4.setText("Registrar");
         jButton4.setBorder(null);
         jButton4.setBorderPainted(false);
@@ -315,12 +325,15 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel2.setText("Nombre ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel3.setText("Codigo");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel5.setText("N° creditos");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, -1, -1));
 
@@ -336,6 +349,10 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+         Equivalencias_interfaz equivalencia;
+        equivalencia = new Equivalencias_interfaz();
+        this.dispose();
+        equivalencia.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

@@ -66,8 +66,7 @@ public class Login_univalle extends javax.swing.JFrame {
            if(rs.next()){              
 
                    Interfaz_principal interfazP = new Interfaz_principal();
-                   interfazP.setValor(control);
-                   
+                   interfazP.setValor(control,Integer.parseInt(JTUsuario.getText()));
                    this.dispose();
                    
                    interfazP.setVisible(true);
@@ -116,7 +115,7 @@ public class Login_univalle extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLtexto_superior.setFont(new java.awt.Font("Century Schoolbook", 0, 24)); // NOI18N
+        jLtexto_superior.setFont(new java.awt.Font("Open Sans", 0, 24)); // NOI18N
         jLtexto_superior.setForeground(new java.awt.Color(255, 0, 0));
         jLtexto_superior.setText("INICIAR SESION");
         jLtexto_superior.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
@@ -130,7 +129,7 @@ public class Login_univalle extends javax.swing.JFrame {
                 jLtexto_superiorMousePressed(evt);
             }
         });
-        getContentPane().add(jLtexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 220, 30));
+        getContentPane().add(jLtexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 180, 30));
 
         jLCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
         jLCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -141,8 +140,9 @@ public class Login_univalle extends javax.swing.JFrame {
         });
         getContentPane().add(jLCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 10, -1, -1));
 
+        jButton3.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2_colorMarca.png"))); // NOI18N
         jButton3.setText("Registrarse");
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
@@ -156,8 +156,9 @@ public class Login_univalle extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 540, 170, 60));
 
+        jButton4.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2_colorMarca.png"))); // NOI18N
         jButton4.setText("Ingresar");
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
@@ -171,19 +172,21 @@ public class Login_univalle extends javax.swing.JFrame {
         });
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 430, 170, 60));
 
+        jLabel9.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 0, 0));
         jLabel9.setText("Olvide mi contraseña");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 630, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario2.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, 60, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoUsuario.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 170, 60, 50));
 
+        jLabel10.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 0, 0));
         jLabel10.setText("Cambiar contraseña");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 630, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/contraseña2.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 60, -1));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoContraseña.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 60, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("Desarrollado por @Equipo Integrador");
@@ -191,6 +194,7 @@ public class Login_univalle extends javax.swing.JFrame {
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 520, 420, 20));
 
         jREstudiante.setBackground(new java.awt.Color(255, 255, 255));
+        jREstudiante.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jREstudiante.setText("Estudiante");
         jREstudiante.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -205,6 +209,7 @@ public class Login_univalle extends javax.swing.JFrame {
         getContentPane().add(jREstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 120, -1));
 
         jRGestor.setBackground(new java.awt.Color(255, 255, 255));
+        jRGestor.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jRGestor.setText("Gestor");
         jRGestor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -218,6 +223,7 @@ public class Login_univalle extends javax.swing.JFrame {
         });
         getContentPane().add(jRGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 360, 110, -1));
 
+        JTUsuario.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         JTUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         JTUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -231,7 +237,13 @@ public class Login_univalle extends javax.swing.JFrame {
         });
         getContentPane().add(JTUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 170, 250, 50));
 
+        jTContraseña.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         jTContraseña.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTContraseñaActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 270, 250, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login3.png"))); // NOI18N
@@ -299,7 +311,7 @@ public class Login_univalle extends javax.swing.JFrame {
         if (jREstudiante.isSelected()==true){
             jRGestor.setEnabled(false);
             control=1;
-            sql = "select * from estudiante where codigo = ? and contraseña = ? ";
+            sql = "select codFicha, contraseña from estudiante A, ficha B where  B.codFicha= ? and A.contraseña = ? and A.cedula = B.cedula";
         }
         else{
              jRGestor.setEnabled(true);
@@ -312,7 +324,7 @@ public class Login_univalle extends javax.swing.JFrame {
         if (jRGestor.isSelected()==true){
             jREstudiante.setEnabled(false);
             control=2;
-            sql = "select * from gestor where cedula = ? and contraseña = ? ";
+            sql = "select cedula, contraseña from gestor where cedula = ? and contraseña = ? ";
         }
         else{
             jREstudiante.setEnabled(true);
@@ -338,6 +350,10 @@ public class Login_univalle extends javax.swing.JFrame {
            evt.consume();
        }
     }//GEN-LAST:event_JTUsuarioKeyTyped
+
+    private void jTContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTContraseñaActionPerformed
 
     /**
      * @param args the command line arguments

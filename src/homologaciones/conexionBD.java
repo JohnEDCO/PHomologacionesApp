@@ -126,6 +126,8 @@ public class conexionBD {
 
         } catch (SQLException e) {
             e.printStackTrace(); // Capturo la excepcion en caso de error
+            
+            JOptionPane.showMessageDialog(null, "Error al realizar la operacion");
         }
         
     }
