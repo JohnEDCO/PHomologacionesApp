@@ -31,6 +31,8 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         TextPrompt ema = new TextPrompt("Email",jTCorreo);
         TextPrompt cod = new TextPrompt("Codigo",jTCodigo);
         TextPrompt cont = new TextPrompt("Contraseña",jPasswordField1);
+        TextPrompt codPrograma = new TextPrompt("Codigo Programa",jTCodigoPrograma);
+        
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
         
