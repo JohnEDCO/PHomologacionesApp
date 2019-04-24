@@ -54,6 +54,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         jREstudiante = new javax.swing.JRadioButton();
         jRGestor = new javax.swing.JRadioButton();
         jTNombre = new javax.swing.JTextField();
+        jTCodigoPrograma = new javax.swing.JTextField();
         jTCodigo = new javax.swing.JTextField();
         jTDocumento = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
@@ -63,6 +64,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         MostrarContra = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
 
@@ -70,7 +72,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLtexto_superior.setFont(new java.awt.Font("Century Schoolbook", 0, 24)); // NOI18N
+        jLtexto_superior.setFont(new java.awt.Font("Open Sans", 0, 24)); // NOI18N
         jLtexto_superior.setForeground(new java.awt.Color(255, 0, 0));
         jLtexto_superior.setText("REGISTRATE");
         jLtexto_superior.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
@@ -84,7 +86,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jLtexto_superiorMousePressed(evt);
             }
         });
-        getContentPane().add(jLtexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 60, 170, 30));
+        getContentPane().add(jLtexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 30, 140, 30));
 
         jLCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
         jLCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -95,8 +97,9 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jLCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
 
+        jButton4.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2_colorMarca.png"))); // NOI18N
         jButton4.setText("Registrarse");
         jButton4.setBorderPainted(false);
         jButton4.setContentAreaFilled(false);
@@ -108,10 +111,11 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 600, 170, 60));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 620, 170, 60));
 
+        jButton3.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2_colorMarca.png"))); // NOI18N
         jButton3.setText("Volver");
         jButton3.setBorderPainted(false);
         jButton3.setContentAreaFilled(false);
@@ -123,13 +127,14 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 600, 170, 60));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 620, 170, 60));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel11.setText("Desarrollado por @Equipo Integrador");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 700, -1, -1));
 
         jREstudiante.setBackground(new java.awt.Color(255, 255, 255));
+        jREstudiante.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jREstudiante.setText("Estudiante");
         jREstudiante.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -141,9 +146,10 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jREstudianteActionPerformed(evt);
             }
         });
-        getContentPane().add(jREstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 120, -1));
+        getContentPane().add(jREstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 120, -1));
 
         jRGestor.setBackground(new java.awt.Color(255, 255, 255));
+        jRGestor.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jRGestor.setText("Gestor");
         jRGestor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -155,15 +161,30 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jRGestorActionPerformed(evt);
             }
         });
-        getContentPane().add(jRGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 130, 110, -1));
+        getContentPane().add(jRGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 90, 110, -1));
 
+        jTNombre.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTNombreActionPerformed(evt);
             }
         });
-        getContentPane().add(jTNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 200, 230, 40));
+        getContentPane().add(jTNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 160, 230, 40));
 
+        jTCodigoPrograma.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jTCodigoPrograma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTCodigoProgramaActionPerformed(evt);
+            }
+        });
+        jTCodigoPrograma.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTCodigoProgramaKeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTCodigoPrograma, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 540, 230, 40));
+
+        jTCodigo.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTCodigoActionPerformed(evt);
@@ -174,8 +195,9 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jTCodigoKeyTyped(evt);
             }
         });
-        getContentPane().add(jTCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 530, 230, 40));
+        getContentPane().add(jTCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 470, 230, 40));
 
+        jTDocumento.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTDocumento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTDocumentoActionPerformed(evt);
@@ -186,39 +208,46 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jTDocumentoKeyTyped(evt);
             }
         });
-        getContentPane().add(jTDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 280, 230, 40));
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 360, 230, 40));
+        getContentPane().add(jTDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 230, 230, 40));
 
+        jPasswordField1.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 300, 230, 40));
+
+        jTCorreo.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTCorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTCorreoActionPerformed(evt);
             }
         });
-        getContentPane().add(jTCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 460, 230, 40));
+        getContentPane().add(jTCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 400, 230, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo nombre2.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 190, -1, -1));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/usuario.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 160, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo contra.png"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 350, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 300, 60, 40));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo dco.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 270, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, -1, 40));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo ema.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 450, -1, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 400, -1, 40));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logo cod2.png"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, -1, -1));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoCodigo.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 470, -1, 40));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoPrograma.png"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 540, -1, 50));
 
         MostrarContra.setBackground(new java.awt.Color(255, 255, 255));
+        MostrarContra.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         MostrarContra.setText("Mostrar Contraseña");
         MostrarContra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MostrarContraActionPerformed(evt);
             }
         });
-        getContentPane().add(MostrarContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 410, -1, -1));
+        getContentPane().add(MostrarContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 350, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login3.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 720));
@@ -322,26 +351,32 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
 
                     try{ 
                     String sql="";
+                    String sql1="";
                     int cedula;
                     int codigo;
                     String nombre = jTNombre.getText();
                     String contraseña = jPasswordField1.getText();
                     String correo = jTCorreo.getText();       
-            
+                    int codPrograma;
+                    
                         if (jRGestor.isSelected()){
                              cedula = Integer.parseInt(jTDocumento.getText());
-                             sql = "insert into gestor (nombre,cedula,contraseña,correo) values ('"+nombre+"','"+cedula+"','"+contraseña+"','"+correo+"')";
+                             codPrograma = Integer.parseInt(jTCodigoPrograma.getText());
+                             sql = "insert into gestor (nombre,cedula,contraseña,correo,codprograma) values ('"+nombre+"','"+cedula+"','"+contraseña+"','"+correo+"','"+codPrograma+"')";
                              System.out.println("entroo peeggasasd");
                         }
                         else {
                              System.out.println("entro en opcion estudiante");
+                             codPrograma = Integer.parseInt(jTCodigoPrograma.getText());
                              cedula = Integer.parseInt(jTDocumento.getText());
                              codigo = Integer.parseInt(jTCodigo.getText()); 
-                             sql = "insert into estudiante (nombre,cedula,contraseña,correo,codigo) values ('"+nombre+"','"+cedula+"','"+contraseña+"','"+correo+"','"+codigo+"')";
+                             sql = "insert into estudiante (nombre,cedula,contraseña,correo) values ('"+nombre+"','"+cedula+"','"+contraseña+"','"+correo+"')";
+                             sql1="insert into ficha (cedula, codFicha, codPrograma) values('"+cedula+"','"+codigo+"','"+codPrograma+"')";
                         }
                              conexionBD con = new conexionBD();
                              con.sentencia(sql);
-
+                             con.sentencia(sql1);
+                             
                              jTCodigo.setText("");
                              jPasswordField1.setText("");
                              jTNombre.setText("");
@@ -412,6 +447,14 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_MostrarContraActionPerformed
 
+    private void jTCodigoProgramaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTCodigoProgramaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTCodigoProgramaActionPerformed
+
+    private void jTCodigoProgramaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTCodigoProgramaKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTCodigoProgramaKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -459,6 +502,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -468,6 +512,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
     private javax.swing.JRadioButton jREstudiante;
     private javax.swing.JRadioButton jRGestor;
     private javax.swing.JTextField jTCodigo;
+    private javax.swing.JTextField jTCodigoPrograma;
     private javax.swing.JTextField jTCorreo;
     private javax.swing.JTextField jTDocumento;
     private javax.swing.JTextField jTNombre;
