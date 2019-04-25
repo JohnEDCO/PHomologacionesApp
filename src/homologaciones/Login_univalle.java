@@ -44,6 +44,8 @@ public class Login_univalle extends javax.swing.JFrame {
         
         JTUsuario.setToolTipText("codigo si es estudiante o cedula si es gestor");
         
+        jLEstudiante.setToolTipText("Estudiante");
+        jLGestor.setToolTipText("Gestor");
         jLCerrar.setToolTipText("Cerrar programa");
     }
     
@@ -109,6 +111,8 @@ public class Login_univalle extends javax.swing.JFrame {
         jRGestor = new javax.swing.JRadioButton();
         JTUsuario = new javax.swing.JTextField();
         jTContraseña = new javax.swing.JPasswordField();
+        jLEstudiante = new javax.swing.JLabel();
+        jLGestor = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -189,13 +193,12 @@ public class Login_univalle extends javax.swing.JFrame {
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 280, 60, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel11.setText("Desarrollado por @Equipo Integrador");
+        jLabel11.setText("Desarrollado por @JCCBAVSG");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 690, -1, -1));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 520, 420, 20));
 
         jREstudiante.setBackground(new java.awt.Color(255, 255, 255));
         jREstudiante.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
-        jREstudiante.setText("Estudiante");
         jREstudiante.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jREstudianteMouseClicked(evt);
@@ -206,11 +209,10 @@ public class Login_univalle extends javax.swing.JFrame {
                 jREstudianteActionPerformed(evt);
             }
         });
-        getContentPane().add(jREstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 120, -1));
+        getContentPane().add(jREstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 360, 30, -1));
 
         jRGestor.setBackground(new java.awt.Color(255, 255, 255));
         jRGestor.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
-        jRGestor.setText("Gestor");
         jRGestor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jRGestorMouseClicked(evt);
@@ -221,7 +223,7 @@ public class Login_univalle extends javax.swing.JFrame {
                 jRGestorActionPerformed(evt);
             }
         });
-        getContentPane().add(jRGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 360, 110, -1));
+        getContentPane().add(jRGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 360, 30, -1));
 
         JTUsuario.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         JTUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -245,6 +247,12 @@ public class Login_univalle extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 270, 250, 50));
+
+        jLEstudiante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoEstudiante.png"))); // NOI18N
+        getContentPane().add(jLEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 340, 50, 60));
+
+        jLGestor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMaestro.png"))); // NOI18N
+        getContentPane().add(jLGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 340, -1, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login3.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1110, 720));
@@ -405,6 +413,8 @@ public class Login_univalle extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLCerrar;
+    private javax.swing.JLabel jLEstudiante;
+    private javax.swing.JLabel jLGestor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -29,7 +29,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         TextPrompt nom = new TextPrompt("Nombre", jTNombre);
         TextPrompt ced = new TextPrompt("Documento De Identidad", jTDocumento);
         TextPrompt ema = new TextPrompt("Email",jTCorreo);
-        TextPrompt cod = new TextPrompt("Codigo",jTCodigo);
+        TextPrompt cod = new TextPrompt("Codigo Estudiante",jTCodigo);
         TextPrompt cont = new TextPrompt("Contraseña",jPasswordField1);
         TextPrompt codPrograma = new TextPrompt("Codigo Programa",jTCodigoPrograma);
         
@@ -37,6 +37,8 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         AWTUtilities.setWindowOpaque(this, false);
         
         jLCerrar.setToolTipText("Cerrar programa");
+        jLEstudiante.setToolTipText("Estudiante");
+        jLGestor.setToolTipText("Gestor");
     }
     
     /**
@@ -68,6 +70,8 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         MostrarContra = new javax.swing.JCheckBox();
+        jLEstudiante = new javax.swing.JLabel();
+        jLGestor = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -137,7 +141,6 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
 
         jREstudiante.setBackground(new java.awt.Color(255, 255, 255));
         jREstudiante.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
-        jREstudiante.setText("Estudiante");
         jREstudiante.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jREstudianteMouseClicked(evt);
@@ -148,11 +151,10 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jREstudianteActionPerformed(evt);
             }
         });
-        getContentPane().add(jREstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 120, -1));
+        getContentPane().add(jREstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 100, 30, -1));
 
         jRGestor.setBackground(new java.awt.Color(255, 255, 255));
         jRGestor.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
-        jRGestor.setText("Gestor");
         jRGestor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jRGestorMouseClicked(evt);
@@ -163,7 +165,7 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
                 jRGestorActionPerformed(evt);
             }
         });
-        getContentPane().add(jRGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 90, 110, -1));
+        getContentPane().add(jRGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 100, 30, -1));
 
         jTNombre.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -251,6 +253,12 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(MostrarContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 350, -1, -1));
 
+        jLEstudiante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoEstudiante.png"))); // NOI18N
+        getContentPane().add(jLEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 80, 50, 60));
+
+        jLGestor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMaestro.png"))); // NOI18N
+        getContentPane().add(jLGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 80, -1, 60));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login3.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 720));
 
@@ -300,11 +308,14 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jREstudiante.isSelected()==true){
             jRGestor.setEnabled(false);
+            jLGestor.setEnabled(false);
+            
             jTCodigo.setEnabled(true);
             control=1;
         }
         else{
             jRGestor.setEnabled(true);
+            jLGestor.setEnabled(true);
             control=0;
         }
     }//GEN-LAST:event_jREstudianteActionPerformed
@@ -318,11 +329,13 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jRGestor.isSelected()==true){
             jREstudiante.setEnabled(false);
+            jLEstudiante.setEnabled(false);
             control=2;
             jTCodigo.setEnabled(false);
         }
         else{
             jREstudiante.setEnabled(true);
+            jLEstudiante.setEnabled(true);
             jTCodigo.setEnabled(true);
             control=0;
         }
@@ -501,6 +514,8 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLCerrar;
+    private javax.swing.JLabel jLEstudiante;
+    private javax.swing.JLabel jLGestor;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;

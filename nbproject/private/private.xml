@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/ALL/UNIVERSIDAD/5°%20semestre/ProyectoFinal/homologaciones/src/homologaciones/Detalle_solicitud.java</file>
-            <file>file:/D:/ALL/UNIVERSIDAD/5°%20semestre/ProyectoFinal/homologaciones/src/homologaciones/Agregar_Asignatura.java</file>
-            <file>file:/D:/ALL/UNIVERSIDAD/5°%20semestre/ProyectoFinal/homologaciones/src/homologaciones/Equivalencias_interfaz.java</file>
+            <file>file:/D:/ALL/UNIVERSIDAD/5°%20semestre/ProyectoFinal/homologaciones/src/homologaciones/Interfaz_principal.java</file>
+            <file>file:/D:/ALL/UNIVERSIDAD/5°%20semestre/ProyectoFinal/homologaciones/src/homologaciones/Registrar_usuarios_interfaz.java</file>
             <file>file:/D:/ALL/UNIVERSIDAD/5°%20semestre/ProyectoFinal/homologaciones/src/homologaciones/Login_univalle.java</file>
+            <file>file:/D:/ALL/UNIVERSIDAD/5°%20semestre/ProyectoFinal/homologaciones/src/homologaciones/Registrar_asignaturas_interfaz.java</file>
             <file>file:/D:/ALL/UNIVERSIDAD/5°%20semestre/ProyectoFinal/homologaciones/src/homologaciones/Registro_equivalencia_otra_universidad.java</file>
+            <file>file:/D:/ALL/UNIVERSIDAD/5°%20semestre/ProyectoFinal/homologaciones/src/homologaciones/Registrar_equivalencias_interfaz.java</file>
         </group>
     </open-files>
 </project-private>

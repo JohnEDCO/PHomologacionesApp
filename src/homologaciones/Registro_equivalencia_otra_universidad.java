@@ -82,6 +82,9 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
         AWTUtilities.setWindowOpaque(this, false);
         jBEnviarSolicitud.setEnabled(false);
         jBDescartar.setEnabled(false);
+        
+        jLCerrar.setToolTipText("Cerrar programa");
+       jLCerrarSesion.setToolTipText("Cerrar Sesion");
        
           String sql2= "select nombre from universidad ";
         ArrayList<String[]> datos1 = conexion.consulta(sql2);
@@ -116,7 +119,7 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel7 = new javax.swing.JLabel();
+        jLCerrarSesion = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -142,20 +145,23 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
         JTAsignaturas = new javax.swing.JTable();
         jBEnviarSolicitud = new javax.swing.JButton();
         jBAgregarAsignatura = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono cerrar sesion.png"))); // NOI18N
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono cerrar sesion.png"))); // NOI18N
+        jLCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+                jLCerrarSesionMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 60, 40));
+        getContentPane().add(jLCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 60, 40));
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -291,16 +297,16 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
         Nombre.setBackground(new java.awt.Color(250, 250, 250));
         Nombre.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         Nombre.setEnabled(false);
-        getContentPane().add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 290, 200, 30));
+        getContentPane().add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 240, 200, 30));
 
         jLabel5.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel5.setText("Nombre");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, -1, -1));
 
         Cedula.setBackground(new java.awt.Color(250, 250, 250));
         Cedula.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         Cedula.setEnabled(false);
-        getContentPane().add(Cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 160, 30));
+        getContentPane().add(Cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 290, 160, 30));
 
         jBDescartar.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jBDescartar.setForeground(new java.awt.Color(255, 255, 255));
@@ -325,7 +331,7 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
 
         jLabel3.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel3.setText("Cedula");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 300, -1, -1));
 
         jCUniversidadOrigen.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jCUniversidadOrigen.addActionListener(new java.awt.event.ActionListener() {
@@ -333,11 +339,11 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
                 jCUniversidadOrigenActionPerformed(evt);
             }
         });
-        getContentPane().add(jCUniversidadOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 310, 30));
+        getContentPane().add(jCUniversidadOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 310, 40));
 
         jLabel8.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel8.setText("Universidad Origen");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, 20));
 
         JTAsignaturas.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         JTAsignaturas.setModel(new javax.swing.table.DefaultTableModel(
@@ -397,8 +403,51 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
         });
         getContentPane().add(jBAgregarAsignatura, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 620, 200, 50));
 
+        jButton4.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMigas_1.png"))); // NOI18N
+        jButton4.setText("Solicitud");
+        jButton4.setBorder(null);
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+
+        jButton9.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMigasGris.png"))); // NOI18N
+        jButton9.setText("Equivalencias");
+        jButton9.setBorder(null);
+        jButton9.setBorderPainted(false);
+        jButton9.setContentAreaFilled(false);
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
+
+        jButton7.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMigasPrimeroGris.png"))); // NOI18N
+        jButton7.setText("Principal");
+        jButton7.setBorder(null);
+        jButton7.setBorderPainted(false);
+        jButton7.setContentAreaFilled(false);
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 1110, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -575,7 +624,7 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
      }
     }//GEN-LAST:event_jBEnviarSolicitudActionPerformed
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+    private void jLCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCerrarSesionMouseClicked
         // TODO add your handling code here:
         int opcion = JOptionPane.showConfirmDialog(null,"¿Desea cerrar sesion?");
         if(opcion ==JOptionPane.YES_OPTION) {
@@ -588,7 +637,7 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
             }
 
         }
-    }//GEN-LAST:event_jLabel7MouseClicked
+    }//GEN-LAST:event_jLCerrarSesionMouseClicked
 
     private void jBDescartarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBDescartarMouseReleased
         // TODO add your handling code here:
@@ -624,6 +673,22 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
         // TODO add your handling code here:
         jBDescartar.setEnabled(true);
     }//GEN-LAST:event_JTAsignaturasMouseClicked
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+         try {
+            Interfaz_principal interfazP = new Interfaz_principal();
+            interfazP.setValor(controlP,datousuario);
+            this.dispose();
+            interfazP.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -675,17 +740,20 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jCUniversidadOrigen;
     private javax.swing.JLabel jLCerrar;
+    private javax.swing.JLabel jLCerrarSesion;
     private javax.swing.JLabel jLTexto_superior;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;

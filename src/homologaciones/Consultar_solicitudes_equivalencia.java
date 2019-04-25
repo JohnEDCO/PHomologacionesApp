@@ -10,6 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
@@ -32,6 +34,9 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false); 
+        
+        jLCerrar.setToolTipText("Cerrar programa");
+       jLCerrarSesion.setToolTipText("Cerrar Sesion");
         
         jBVer.setEnabled(false);
         jBAREchazarSolicitud.setEnabled(false);
@@ -77,7 +82,7 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
+        jLCerrarSesion = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
@@ -102,20 +107,23 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
         jTSolicitudes = new javax.swing.JTable();
         rSDateDesde = new rojeru_san.componentes.RSDateChooser();
         rSDateHasta = new rojeru_san.componentes.RSDateChooser();
+        jButton7 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono cerrar sesion.png"))); // NOI18N
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono cerrar sesion.png"))); // NOI18N
+        jLCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                jLCerrarSesionMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 60, 40));
+        getContentPane().add(jLCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 60, 40));
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -250,11 +258,11 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
 
         jLHasta.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLHasta.setText("Hasta");
-        getContentPane().add(jLHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 240, -1, -1));
+        getContentPane().add(jLHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, -1, -1));
 
         jLDesde.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLDesde.setText("Desde");
-        getContentPane().add(jLDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, -1, -1));
+        getContentPane().add(jLDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, -1, -1));
 
         jBAREchazarSolicitud.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jBAREchazarSolicitud.setForeground(new java.awt.Color(255, 255, 255));
@@ -302,7 +310,7 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
                 jBVerActionPerformed(evt);
             }
         });
-        getContentPane().add(jBVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 360, 70, 30));
+        getContentPane().add(jBVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 370, 70, 30));
 
         jBRealizarBusqueda.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jBRealizarBusqueda.setForeground(new java.awt.Color(255, 255, 255));
@@ -318,7 +326,7 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
                 jBRealizarBusquedaActionPerformed(evt);
             }
         });
-        getContentPane().add(jBRealizarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 230, 190, 40));
+        getContentPane().add(jBRealizarBusqueda, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 250, 190, 40));
 
         jTSolicitudes.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTSolicitudes.setModel(new javax.swing.table.DefaultTableModel(
@@ -344,21 +352,64 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
         });
         jScrollSolicitudes.setViewportView(jTSolicitudes);
 
-        getContentPane().add(jScrollSolicitudes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 630, 240));
+        getContentPane().add(jScrollSolicitudes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 630, 240));
 
         rSDateDesde.setColorBackground(new java.awt.Color(207, 32, 62));
         rSDateDesde.setColorButtonHover(new java.awt.Color(207, 32, 62));
         rSDateDesde.setColorForeground(new java.awt.Color(0, 0, 0));
         rSDateDesde.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         rSDateDesde.setFuente(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        getContentPane().add(rSDateDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
+        getContentPane().add(rSDateDesde, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, -1, -1));
 
         rSDateHasta.setColorBackground(new java.awt.Color(207, 32, 62));
         rSDateHasta.setColorButtonHover(new java.awt.Color(207, 32, 62));
         rSDateHasta.setColorForeground(new java.awt.Color(0, 0, 0));
         rSDateHasta.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         rSDateHasta.setFuente(new java.awt.Font("Open Sans", 0, 12)); // NOI18N
-        getContentPane().add(rSDateHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, -1, -1));
+        getContentPane().add(rSDateHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, -1, -1));
+
+        jButton7.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMigasPrimeroGris.png"))); // NOI18N
+        jButton7.setText("Principal");
+        jButton7.setBorder(null);
+        jButton7.setBorderPainted(false);
+        jButton7.setContentAreaFilled(false);
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+
+        jButton4.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMigas_1.png"))); // NOI18N
+        jButton4.setText("Consultar");
+        jButton4.setBorder(null);
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+
+        jButton9.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMigasGris.png"))); // NOI18N
+        jButton9.setText("Equivalencias");
+        jButton9.setBorder(null);
+        jButton9.setBorderPainted(false);
+        jButton9.setContentAreaFilled(false);
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 710));
@@ -605,7 +656,7 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTSolicitudesMouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void jLCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCerrarSesionMouseClicked
         // TODO add your handling code here:
         int opcion = JOptionPane.showConfirmDialog(null,"¿Desea cerrar sesion?");
         if(opcion ==JOptionPane.YES_OPTION) {
@@ -618,7 +669,28 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
             }
 
         }
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_jLCerrarSesionMouseClicked
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        Equivalencias_interfaz equivalencia;
+        equivalencia = new Equivalencias_interfaz();
+        equivalencia.setControl(control,datoUsuario);
+        this.dispose();
+        equivalencia.setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+         try {
+            Interfaz_principal interfazP = new Interfaz_principal();
+            interfazP.setValor(control,datoUsuario);
+            this.dispose();
+            interfazP.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -669,14 +741,17 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLCerrar;
+    private javax.swing.JLabel jLCerrarSesion;
     private javax.swing.JLabel jLDesde;
     private javax.swing.JLabel jLHasta;
     private javax.swing.JLabel jLTexto_superior;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollSolicitudes;

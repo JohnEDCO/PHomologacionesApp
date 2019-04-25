@@ -34,6 +34,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         jButton4.setToolTipText("Haga click aqui para registrar");
         
         jLCerrar.setToolTipText("Cerrar programa");
+        jLCerrarSesion.setToolTipText("Cerrar Sesion");
         
         UIManager UI=new UIManager(); // para cambiar el color de fondo de los JOptionpane
         UI.put("OptionPane.background",Color.white);
@@ -53,7 +54,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel3 = new javax.swing.JLabel();
+        jLCerrarSesion = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
@@ -88,20 +89,23 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono cerrar sesion.png"))); // NOI18N
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono cerrar sesion.png"))); // NOI18N
+        jLCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                jLCerrarSesionMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 60, 40));
+        getContentPane().add(jLCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 60, 40));
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -233,12 +237,12 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
                 jTNumCreditosKeyTyped(evt);
             }
         });
-        getContentPane().add(jTNumCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 240, 40));
+        getContentPane().add(jTNumCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 240, 40));
 
         jTCodigoA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTCodigoA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTCodigoA.setOpaque(false);
-        getContentPane().add(jTCodigoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 240, 40));
+        getContentPane().add(jTCodigoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 240, 40));
 
         jLCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
         jLCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -341,12 +345,12 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
 
         jLNombre.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLNombre.setText("Codigo");
-        getContentPane().add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, -1, -1));
+        getContentPane().add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, -1));
 
         jTNombreA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTNombreA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTNombreA.setOpaque(false);
-        getContentPane().add(jTNombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 240, 40));
+        getContentPane().add(jTNombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 250, 240, 40));
 
         jTTipo.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTTipo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -356,19 +360,62 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
                 jTTipoKeyTyped(evt);
             }
         });
-        getContentPane().add(jTTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 240, 40));
+        getContentPane().add(jTTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 240, 40));
 
         jLabel7.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel7.setText("Tipo");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, -1));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 380, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel2.setText("Nombre ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel5.setText("N° creditos");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, -1, -1));
+
+        jButton7.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMigasPrimeroGris.png"))); // NOI18N
+        jButton7.setText("Principal");
+        jButton7.setBorder(null);
+        jButton7.setBorderPainted(false);
+        jButton7.setContentAreaFilled(false);
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+
+        jButton8.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        jButton8.setForeground(new java.awt.Color(255, 255, 255));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMigas_1.png"))); // NOI18N
+        jButton8.setText("Regristrar");
+        jButton8.setBorder(null);
+        jButton8.setBorderPainted(false);
+        jButton8.setContentAreaFilled(false);
+        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+
+        jButton9.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMigasGris.png"))); // NOI18N
+        jButton9.setText("Asignaturas");
+        jButton9.setBorder(null);
+        jButton9.setBorderPainted(false);
+        jButton9.setContentAreaFilled(false);
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, -1));
@@ -553,7 +600,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTTipoKeyTyped
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void jLCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCerrarSesionMouseClicked
         // TODO add your handling code here:
         int opcion = JOptionPane.showConfirmDialog(null,"¿Desea cerrar sesion?");
         if(opcion ==JOptionPane.YES_OPTION) {
@@ -566,7 +613,28 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
             }
 
         }
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_jLCerrarSesionMouseClicked
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        Asignaturas_interfaz asignaturas ;
+
+        asignaturas = new Asignaturas_interfaz();
+        this.dispose();
+        asignaturas.setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+         try {
+            Interfaz_principal interfazP = new Interfaz_principal();
+            interfazP.setValor(control,datoUsuario);
+            this.dispose();
+            interfazP.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            
+        }
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -617,13 +685,16 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLCerrar;
+    private javax.swing.JLabel jLCerrarSesion;
     private javax.swing.JLabel jLNombre;
     private javax.swing.JLabel jLTexto_superior;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

@@ -61,6 +61,9 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
         
+        jLCerrar.setToolTipText("Cerrar programa");
+       jLCerrarSesion.setToolTipText("Cerrar Sesion");
+        
        // para que cuando se abra la ventana ya aparezcan todos lo datos en la tablas
         String sql = "Select nombre,codAsignatura,tipo,numCreditos,validable,habilitable,activo From asignatura";
         ArrayList<String[]> datos = null;
@@ -101,7 +104,7 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jLabel3 = new javax.swing.JLabel();
+        jLCerrarSesion = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -139,6 +142,9 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         jLCodigoA = new javax.swing.JLabel();
         jLTipo = new javax.swing.JLabel();
         jLNumCreditos = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         jMenuItem1.setText("heyy");
@@ -151,14 +157,14 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono cerrar sesion.png"))); // NOI18N
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono cerrar sesion.png"))); // NOI18N
+        jLCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLCerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
+                jLCerrarSesionMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 60, 40));
+        getContentPane().add(jLCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 60, 40));
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -327,32 +333,32 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
             jTableAsignaturas.getColumnModel().getColumn(6).setMaxWidth(60);
         }
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 1040, 200));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 1040, 190));
 
         jTNombreA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTNombreA.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTNombreA.setOpaque(false);
-        getContentPane().add(jTNombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 230, 40));
+        getContentPane().add(jTNombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 500, 230, 40));
 
         jTCodigoA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTCodigoA.setOpaque(false);
-        getContentPane().add(jTCodigoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, 230, 40));
+        getContentPane().add(jTCodigoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 550, 230, 40));
 
         jTTipo.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTTipo.setOpaque(false);
-        getContentPane().add(jTTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 630, 230, 40));
+        getContentPane().add(jTTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 650, 230, 40));
 
         jTNumCreditos.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTNumCreditos.setOpaque(false);
-        getContentPane().add(jTNumCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 580, 230, 40));
+        getContentPane().add(jTNumCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 600, 230, 40));
 
         jLHabilitable.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLHabilitable.setText("Habilitable");
-        getContentPane().add(jLHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 510, -1, -1));
+        getContentPane().add(jLHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 530, -1, -1));
 
         jLEstado.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLEstado.setText("Estado");
-        getContentPane().add(jLEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 620, -1, -1));
+        getContentPane().add(jLEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 640, -1, -1));
 
         jRSiHabilitable.setBackground(new java.awt.Color(255, 255, 255));
         jRSiHabilitable.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
@@ -362,7 +368,7 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
                 jRSiHabilitableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRSiHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 510, -1, -1));
+        getContentPane().add(jRSiHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 530, -1, -1));
 
         jRInactivo.setBackground(new java.awt.Color(255, 255, 255));
         jRInactivo.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
@@ -373,7 +379,7 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
                 jRInactivoActionPerformed(evt);
             }
         });
-        getContentPane().add(jRInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 620, -1, -1));
+        getContentPane().add(jRInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 640, -1, -1));
 
         jRActivo.setBackground(new java.awt.Color(255, 255, 255));
         jRActivo.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
@@ -384,7 +390,7 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
                 jRActivoActionPerformed(evt);
             }
         });
-        getContentPane().add(jRActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 620, -1, -1));
+        getContentPane().add(jRActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 640, -1, -1));
 
         jRNoHabilitable.setBackground(new java.awt.Color(255, 255, 255));
         jRNoHabilitable.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
@@ -394,11 +400,11 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
                 jRNoHabilitableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRNoHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 510, -1, -1));
+        getContentPane().add(jRNoHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 530, -1, -1));
 
         jLValidable.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLValidable.setText("Validable");
-        getContentPane().add(jLValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 570, -1, -1));
+        getContentPane().add(jLValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 590, -1, -1));
 
         jRSiValidable.setBackground(new java.awt.Color(255, 255, 255));
         jRSiValidable.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
@@ -408,7 +414,7 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
                 jRSiValidableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRSiValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 570, -1, -1));
+        getContentPane().add(jRSiValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 590, -1, -1));
 
         jRNoValidable.setBackground(new java.awt.Color(255, 255, 255));
         jRNoValidable.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
@@ -418,13 +424,13 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
                 jRNoValidableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRNoValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 570, -1, -1));
+        getContentPane().add(jRNoValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 590, -1, -1));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 480, 30, 220));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 500, 30, 200));
 
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 480, 30, 220));
+        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 500, 30, 200));
 
         jTbuscador.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTbuscador.addActionListener(new java.awt.event.ActionListener() {
@@ -437,7 +443,7 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
                 jTbuscadorKeyReleased(evt);
             }
         });
-        getContentPane().add(jTbuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 450, 40));
+        getContentPane().add(jTbuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 450, 40));
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoBuscar.png"))); // NOI18N
         jButton8.setToolTipText("");
@@ -449,7 +455,7 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, 50, 60));
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 230, 50, 60));
 
         jBEditar.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jBEditar.setForeground(new java.awt.Color(255, 255, 255));
@@ -469,22 +475,65 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
 
         jLNombreA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLNombreA.setText("Nombre");
-        getContentPane().add(jLNombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, -1, -1));
+        getContentPane().add(jLNombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 510, -1, -1));
 
         jLCodigoA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLCodigoA.setText("Codigo");
-        getContentPane().add(jLCodigoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 540, -1, -1));
+        getContentPane().add(jLCodigoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, -1, -1));
 
         jLTipo.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLTipo.setText("Tipo");
-        getContentPane().add(jLTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 650, -1, -1));
+        getContentPane().add(jLTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 670, -1, -1));
 
         jLNumCreditos.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLNumCreditos.setText("N° creditos");
-        getContentPane().add(jLNumCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 590, -1, -1));
+        getContentPane().add(jLNumCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 610, -1, -1));
+
+        jButton7.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMigasPrimeroGris.png"))); // NOI18N
+        jButton7.setText("Principal");
+        jButton7.setBorder(null);
+        jButton7.setBorderPainted(false);
+        jButton7.setContentAreaFilled(false);
+        jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
+
+        jButton4.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMigas_1.png"))); // NOI18N
+        jButton4.setText("Consultar");
+        jButton4.setBorder(null);
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
+        jButton4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, -1, -1));
+
+        jButton9.setFont(new java.awt.Font("Open Sans", 0, 14)); // NOI18N
+        jButton9.setForeground(new java.awt.Color(255, 255, 255));
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMigasGris.png"))); // NOI18N
+        jButton9.setText("Asignaturas");
+        jButton9.setBorder(null);
+        jButton9.setBorderPainted(false);
+        jButton9.setContentAreaFilled(false);
+        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 180, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1110, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -770,7 +819,7 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_jBEditarActionPerformed
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    private void jLCerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCerrarSesionMouseClicked
         // TODO add your handling code here:
         int opcion = JOptionPane.showConfirmDialog(null,"¿Desea cerrar sesion?");
         if(opcion ==JOptionPane.YES_OPTION) {
@@ -783,7 +832,30 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
             }
 
         }
-    }//GEN-LAST:event_jLabel3MouseClicked
+    }//GEN-LAST:event_jLCerrarSesionMouseClicked
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+          Asignaturas_interfaz asignaturas ;
+        asignaturas = new Asignaturas_interfaz();
+        asignaturas.setControl(control,datoUsuario);
+        this.dispose();
+        asignaturas.setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        
+        try {
+            Interfaz_principal interfazP = new Interfaz_principal();
+            interfazP.setValor(control,datoUsuario);
+            this.dispose();
+            interfazP.setVisible(true);
+        } catch (ClassNotFoundException ex) {
+            
+        }
+                   
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -831,10 +903,14 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLCerrar;
+    private javax.swing.JLabel jLCerrarSesion;
     private javax.swing.JLabel jLCodigoA;
     private javax.swing.JLabel jLEstado;
     private javax.swing.JLabel jLHabilitable;
@@ -844,7 +920,6 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLTipo;
     private javax.swing.JLabel jLValidable;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuItem jMenuItem1;
