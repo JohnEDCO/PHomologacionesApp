@@ -378,7 +378,7 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
                 jBDescartarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBDescartar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 120, 40));
+        getContentPane().add(jBDescartar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 610, 110, 30));
 
         jBCancelarSolicitud.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jBCancelarSolicitud.setForeground(new java.awt.Color(255, 255, 255));
@@ -394,7 +394,7 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
                 jBCancelarSolicitudActionPerformed(evt);
             }
         });
-        getContentPane().add(jBCancelarSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 640, 200, 50));
+        getContentPane().add(jBCancelarSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 640, 200, 50));
 
         jBEnviarSolicitud.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jBEnviarSolicitud.setForeground(new java.awt.Color(255, 255, 255));
@@ -410,7 +410,7 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
                 jBEnviarSolicitudActionPerformed(evt);
             }
         });
-        getContentPane().add(jBEnviarSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 640, 200, 50));
+        getContentPane().add(jBEnviarSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 640, 200, 50));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, -1));

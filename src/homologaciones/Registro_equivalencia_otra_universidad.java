@@ -80,7 +80,8 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
         initComponents();
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
-       jBEnviarSolicitud.setEnabled(false);
+        jBEnviarSolicitud.setEnabled(false);
+        jBDescartar.setEnabled(false);
        
           String sql2= "select nombre from universidad ";
         ArrayList<String[]> datos1 = conexion.consulta(sql2);
@@ -133,6 +134,7 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
         Nombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         Cedula = new javax.swing.JTextField();
+        jBDescartar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jCUniversidadOrigen = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
@@ -300,6 +302,27 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
         Cedula.setEnabled(false);
         getContentPane().add(Cedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 290, 160, 30));
 
+        jBDescartar.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jBDescartar.setForeground(new java.awt.Color(255, 255, 255));
+        jBDescartar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2_colorMarca.png"))); // NOI18N
+        jBDescartar.setText("Descartar");
+        jBDescartar.setBorder(null);
+        jBDescartar.setBorderPainted(false);
+        jBDescartar.setContentAreaFilled(false);
+        jBDescartar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBDescartar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBDescartar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBDescartarMouseReleased(evt);
+            }
+        });
+        jBDescartar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDescartarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBDescartar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 100, 30));
+
         jLabel3.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel3.setText("Cedula");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, -1, -1));
@@ -331,6 +354,11 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        JTAsignaturas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JTAsignaturasMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(JTAsignaturas);
@@ -426,7 +454,10 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
     private void jCUniversidadOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCUniversidadOrigenActionPerformed
         // TODO add your handling code here:
         if(jCUniversidadOrigen.getSelectedIndex()!=0){
-            jBEnviarSolicitud.setEnabled(true);
+            if(JTAsignaturas.getRowCount()!=0){
+                jBEnviarSolicitud.setEnabled(true);
+            }
+            
         }
         else{
             jBEnviarSolicitud.setEnabled(false);
@@ -537,6 +568,9 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
         conexion.sentencia(sql5);
         DefaultTableModel modelo = (DefaultTableModel) JTAsignaturas.getModel();
             while(modelo.getRowCount()>0)modelo.removeRow(0);
+            
+            jBDescartar.setEnabled(false);
+            jBEnviarSolicitud.setEnabled(false);
 
      }
     }//GEN-LAST:event_jBEnviarSolicitudActionPerformed
@@ -555,6 +589,41 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
 
         }
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jBDescartarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBDescartarMouseReleased
+        // TODO add your handling code here:
+        if(JTAsignaturas.getRowCount()==0){
+            jBEnviarSolicitud.setEnabled(false);
+        }
+        else{
+            jBEnviarSolicitud.setEnabled(true);
+        }
+    }//GEN-LAST:event_jBDescartarMouseReleased
+
+    private void jBDescartarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDescartarActionPerformed
+        // TODO add your handling code here:
+        try{
+            int filaSel = JTAsignaturas.getSelectedRow();
+
+            DefaultTableModel modelo = (DefaultTableModel)JTAsignaturas.getModel();
+
+            String id = (String)modelo.getValueAt(filaSel,0);
+
+            modelo.removeRow(filaSel);
+            System.out.println("Sid"+id);
+            ;
+        }
+        catch(Exception a1){
+            JOptionPane.showMessageDialog(this,"\"Debe seleccionar una fila de la consulta primero \nantes de eliminar\"");
+        }
+        jBDescartar.setEnabled(false);
+
+    }//GEN-LAST:event_jBDescartarActionPerformed
+
+    private void JTAsignaturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTAsignaturasMouseClicked
+        // TODO add your handling code here:
+        jBDescartar.setEnabled(true);
+    }//GEN-LAST:event_JTAsignaturasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -601,6 +670,7 @@ public class Registro_equivalencia_otra_universidad extends javax.swing.JFrame  
     public static javax.swing.JTable JTAsignaturas;
     private javax.swing.JTextField Nombre;
     private javax.swing.JButton jBAgregarAsignatura;
+    private javax.swing.JButton jBDescartar;
     private javax.swing.JButton jBEnviarSolicitud;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
