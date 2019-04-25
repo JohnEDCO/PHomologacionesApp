@@ -6,6 +6,8 @@
 package homologaciones;
 
 import com.sun.awt.AWTUtilities;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -51,6 +53,7 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
@@ -64,14 +67,23 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         jLTexto_superior = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jBRegistrarA = new javax.swing.JButton();
         jLCerrar = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        jBRegistrarA = new javax.swing.JButton();
+        jBConsultar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono cerrar sesion.png"))); // NOI18N
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 60, 40));
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -187,28 +199,13 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
                 jLTexto_superiorMousePressed(evt);
             }
         });
-        getContentPane().add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
+        getContentPane().add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 100, 110, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoUnivalle.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jBRegistrarA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
-        jBRegistrarA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton_agregar.png"))); // NOI18N
-        jBRegistrarA.setText("     Registrar asignatura");
-        jBRegistrarA.setBorder(null);
-        jBRegistrarA.setBorderPainted(false);
-        jBRegistrarA.setContentAreaFilled(false);
-        jBRegistrarA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jBRegistrarA.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBRegistrarA.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBRegistrarAActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jBRegistrarA, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 230, -1));
 
         jLCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
         jLCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -219,20 +216,35 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jLCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
 
-        jButton8.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton_consultar.png"))); // NOI18N
-        jButton8.setText("Consultar ");
-        jButton8.setBorder(null);
-        jButton8.setBorderPainted(false);
-        jButton8.setContentAreaFilled(false);
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jBRegistrarA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jBRegistrarA.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoAsignaturas.png"))); // NOI18N
+        jBRegistrarA.setText(" Registrar asignaturas");
+        jBRegistrarA.setBorder(null);
+        jBRegistrarA.setBorderPainted(false);
+        jBRegistrarA.setContentAreaFilled(false);
+        jBRegistrarA.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBRegistrarA.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jBRegistrarA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jBRegistrarAActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
+        getContentPane().add(jBRegistrarA, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 240, -1));
+
+        jBConsultar.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jBConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoBuscarGrande(1).png"))); // NOI18N
+        jBConsultar.setText(" Consultar");
+        jBConsultar.setBorder(null);
+        jBConsultar.setBorderPainted(false);
+        jBConsultar.setContentAreaFilled(false);
+        jBConsultar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBConsultar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jBConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBConsultarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 150, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, -1));
@@ -285,76 +297,93 @@ public class Asignaturas_interfaz extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_jLCerrarMouseClicked
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        int opcion = JOptionPane.showConfirmDialog(null,"¿Desea cerrar sesion?");
+        if(opcion ==JOptionPane.YES_OPTION) {
+            try {
+                Login_univalle log = new Login_univalle();
+                this.dispose();
+                log.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                
+            }
+
+        }
+    }//GEN-LAST:event_jLabel3MouseClicked
+
     private void jBRegistrarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarAActionPerformed
         // TODO add your handling code here:
-        Registrar_asignaturas_interfaz registrar;
+         Registrar_asignaturas_interfaz registrar;
         registrar = new Registrar_asignaturas_interfaz();
+        registrar.setControl(control,datoUsuario);
         this.setVisible(false);
         registrar.setVisible(true);
     }//GEN-LAST:event_jBRegistrarAActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jBConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarActionPerformed
         // TODO add your handling code here:
         Consultar_editar_asignaturas_interfaz consul_edit = new Consultar_editar_asignaturas_interfaz();
         consul_edit.setControl(control,datoUsuario);
         this.setVisible(false);
         consul_edit.setVisible(true);
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_jBConsultarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-           
-            public void run() {
-                try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
-                    
-                } catch (Exception ex) {
-                    System.out.println("Error de recuadro interfaz");
-                } 
-                
-                new Asignaturas_interfaz().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//           
+//            public void run() {
+//                try {
+//                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
+//                    
+//                } catch (Exception ex) {
+//                    System.out.println("Error de recuadro interfaz");
+//                } 
+//                
+//                new Asignaturas_interfaz().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBConsultar;
     private javax.swing.JButton jBRegistrarA;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLCerrar;
     private javax.swing.JLabel jLTexto_superior;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator2;

@@ -6,16 +6,20 @@
 package homologaciones;
 
 import com.sun.awt.AWTUtilities;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
-
+import java.awt.print.*;
+import static java.awt.print.Printable.NO_SUCH_PAGE;
+import static java.awt.print.Printable.PAGE_EXISTS;
 /**
  *
  * @author JOHN EDWAR
  */
-public class Detalle_solicitud extends javax.swing.JFrame {
+public class Detalle_solicitud extends javax.swing.JFrame implements Printable {
 
     /**
      * Creates new form Detalle_solicitud
@@ -28,6 +32,17 @@ public class Detalle_solicitud extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
+    }
+    public int print(Graphics graf,PageFormat pagfor, int page) throws PrinterException{
+        if(page > 0){
+            return NO_SUCH_PAGE;
+        }
+        Graphics2D bot = (Graphics2D) graf;
+        bot.translate(pagfor.getImageableX() - 5, pagfor.getImageableY() + 20);
+        bot.scale(0.7, 0.7);
+        jPanelImprimir.printAll(graf);
+        return PAGE_EXISTS;
+    
     }
     public void setInformacion(String estado,String codigo, String nombre, String solicitud, String programaD) {
         
@@ -116,7 +131,7 @@ public class Detalle_solicitud extends javax.swing.JFrame {
              break;
         }
         
-     String sql5="select C.codPrograma, A.codAsignatura, B.nombre from asignatura A, solicitudDetalle B, programaAsignatura C where B.numSolicitud ='"+solicitudP+"' and A.codAsignatura=B.codAsignatura  and B.codAsignatura= C.codAsignatura ";
+     String sql5="select C.codPrograma, A.codAsignatura, B.nombre from asignatura A, solicitudDetalle B, programaAsignatura C where B.numSolicitud ='"+solicitudP+"' and C.codPrograma='"+Integer.parseInt(programaD)+"' and A.codAsignatura=B.codAsignatura  and B.codAsignatura= C.codAsignatura ";
      
        ArrayList<String[]> datos4 = conexion.consulta(sql5);
        
@@ -150,7 +165,8 @@ public class Detalle_solicitud extends javax.swing.JFrame {
     private void initComponents() {
 
         jLCerrar = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jPanelImprimir = new javax.swing.JPanel();
         jLLogoUnivalle = new javax.swing.JLabel();
         jLTexto_superior = new javax.swing.JLabel();
         jLNombre = new javax.swing.JLabel();
@@ -184,11 +200,26 @@ public class Detalle_solicitud extends javax.swing.JFrame {
         });
         getContentPane().add(jLCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 10, -1, -1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jButton3.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/impresoraTamaño.png"))); // NOI18N
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton3.setFocusPainted(false);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 100, 50, 40));
+
+        jPanelImprimir.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelImprimir.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLLogoUnivalle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoUnivalle.png"))); // NOI18N
-        jPanel1.add(jLLogoUnivalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
+        jPanelImprimir.add(jLLogoUnivalle, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, -1, -1));
 
         jLTexto_superior.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLTexto_superior.setForeground(new java.awt.Color(255, 0, 0));
@@ -204,47 +235,47 @@ public class Detalle_solicitud extends javax.swing.JFrame {
                 jLTexto_superiorMousePressed(evt);
             }
         });
-        jPanel1.add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 90, -1, -1));
+        jPanelImprimir.add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 90, -1, -1));
 
         jLNombre.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLNombre.setText("nombre");
-        jPanel1.add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 300, 20));
+        jPanelImprimir.add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 300, 20));
 
         jLCodigoOrigen.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLCodigoOrigen.setText("codigo origen");
-        jPanel1.add(jLCodigoOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 270, 20));
+        jPanelImprimir.add(jLCodigoOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 270, 20));
 
         jLEstadoSolicitud.setFont(new java.awt.Font("Open Sans", 1, 16)); // NOI18N
         jLEstadoSolicitud.setText("Estado solicitud -->");
-        jPanel1.add(jLEstadoSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 130, 180, 20));
+        jPanelImprimir.add(jLEstadoSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 130, 180, 20));
 
         jLProgramaDestino.setFont(new java.awt.Font("Open Sans", 1, 16)); // NOI18N
         jLProgramaDestino.setText("Programa destino ");
-        jPanel1.add(jLProgramaDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 160, -1));
+        jPanelImprimir.add(jLProgramaDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 160, -1));
 
         jLProgramaD.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLProgramaD.setText("programa d");
-        jPanel1.add(jLProgramaD, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 340, -1));
+        jPanelImprimir.add(jLProgramaD, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 340, -1));
 
         jLabel3.setFont(new java.awt.Font("Open Sans", 1, 16)); // NOI18N
         jLabel3.setText("Informacion estudiante");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        jPanelImprimir.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, -1));
 
         jLEstado.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLEstado.setText("Estado");
-        jPanel1.add(jLEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 130, 130, -1));
+        jPanelImprimir.add(jLEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 130, 130, -1));
 
         jLCC.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLCC.setText("C.C ");
-        jPanel1.add(jLCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, -1, -1));
+        jPanelImprimir.add(jLCC, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
 
         jLCedula.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLCedula.setText("cedula ");
-        jPanel1.add(jLCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
+        jPanelImprimir.add(jLCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Open Sans", 1, 16)); // NOI18N
         jLabel1.setText("Informacion Solicitud");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, -1, -1));
+        jPanelImprimir.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 130, -1, -1));
 
         jTAsignaturasSolicitud.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -264,7 +295,7 @@ public class Detalle_solicitud extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTAsignaturasSolicitud);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 490, 290));
+        jPanelImprimir.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 490, 290));
 
         jTAsignaturasEquivalentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -284,17 +315,17 @@ public class Detalle_solicitud extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTAsignaturasEquivalentes);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 310, 480, 290));
+        jPanelImprimir.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 310, 480, 290));
 
         jLProgramaOrigen.setFont(new java.awt.Font("Open Sans", 1, 16)); // NOI18N
         jLProgramaOrigen.setText("Programa origen");
-        jPanel1.add(jLProgramaOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, -1, -1));
+        jPanelImprimir.add(jLProgramaOrigen, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
 
         jLProgramaO.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLProgramaO.setText("Programa o");
-        jPanel1.add(jLProgramaO, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, -1, -1));
+        jPanelImprimir.add(jLProgramaO, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 1020, 640));
+        getContentPane().add(jPanelImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 1020, 640));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -321,48 +352,65 @@ public class Detalle_solicitud extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLCerrarMouseClicked
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        try{
+            PrinterJob imprimir = PrinterJob.getPrinterJob();
+            imprimir.setPrintable(this);
+            boolean impr = imprimir.printDialog();
+            
+            if(impr){
+                imprimir.print();
+            }
+        }
+        catch(PrinterException pex){
+            System.out.println("Error\n" + pex);
+        }
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Detalle_solicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Detalle_solicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Detalle_solicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Detalle_solicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                 try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
-                    
-                } catch (Exception ex) {
-                    System.out.println("Error de recuadro interfaz");
-                } 
-                new Detalle_solicitud().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Detalle_solicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Detalle_solicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Detalle_solicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Detalle_solicitud.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                 try {
+//                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
+//                    
+//                } catch (Exception ex) {
+//                    System.out.println("Error de recuadro interfaz");
+//                } 
+//                new Detalle_solicitud().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLCC;
     private javax.swing.JLabel jLCedula;
     private javax.swing.JLabel jLCerrar;
@@ -379,7 +427,7 @@ public class Detalle_solicitud extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelImprimir;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTAsignaturasEquivalentes;

@@ -6,6 +6,7 @@
 package homologaciones;
 
 import com.sun.awt.AWTUtilities;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -21,10 +22,13 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
     int x,y;
     int control;
     int datoUsuario;
+    conexionBD conexion = new conexionBD();
+    
     public Equivalencias_interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
         AWTUtilities.setWindowOpaque(this, false);
+        
     }
     public void setControl(int controlP,int dato) {
         datoUsuario=dato;
@@ -42,6 +46,7 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
@@ -55,14 +60,23 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
         jLTexto_superior = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jBRegistrarEquivalencia = new javax.swing.JButton();
         jLCerrar = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        jBConsultarSolicitudes = new javax.swing.JButton();
+        jBRegistrarEquivalencia = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono cerrar sesion.png"))); // NOI18N
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 60, 40));
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -178,28 +192,13 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
                 jLTexto_superiorMousePressed(evt);
             }
         });
-        getContentPane().add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
+        getContentPane().add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 100, 110, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoUnivalle.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jBRegistrarEquivalencia.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
-        jBRegistrarEquivalencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton_agregar.png"))); // NOI18N
-        jBRegistrarEquivalencia.setText("     Solicitar equivalencia");
-        jBRegistrarEquivalencia.setBorder(null);
-        jBRegistrarEquivalencia.setBorderPainted(false);
-        jBRegistrarEquivalencia.setContentAreaFilled(false);
-        jBRegistrarEquivalencia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jBRegistrarEquivalencia.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jBRegistrarEquivalencia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBRegistrarEquivalenciaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jBRegistrarEquivalencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 230, -1));
 
         jLCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
         jLCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -210,20 +209,35 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jLCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 10, -1, -1));
 
-        jButton8.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton_consultar.png"))); // NOI18N
-        jButton8.setText("       Consultar solicitudes  ");
-        jButton8.setBorder(null);
-        jButton8.setBorderPainted(false);
-        jButton8.setContentAreaFilled(false);
-        jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        jBConsultarSolicitudes.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jBConsultarSolicitudes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoBuscarGrande.png"))); // NOI18N
+        jBConsultarSolicitudes.setText("  Consultar solicitudes");
+        jBConsultarSolicitudes.setBorder(null);
+        jBConsultarSolicitudes.setBorderPainted(false);
+        jBConsultarSolicitudes.setContentAreaFilled(false);
+        jBConsultarSolicitudes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBConsultarSolicitudes.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jBConsultarSolicitudes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jBConsultarSolicitudesActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, -1, -1));
+        getContentPane().add(jBConsultarSolicitudes, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 230, 80));
+
+        jBRegistrarEquivalencia.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jBRegistrarEquivalencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoEquivalencia.png"))); // NOI18N
+        jBRegistrarEquivalencia.setText(" Solicitar equivalencia");
+        jBRegistrarEquivalencia.setBorder(null);
+        jBRegistrarEquivalencia.setBorderPainted(false);
+        jBRegistrarEquivalencia.setContentAreaFilled(false);
+        jBRegistrarEquivalencia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBRegistrarEquivalencia.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jBRegistrarEquivalencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRegistrarEquivalenciaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBRegistrarEquivalencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 250, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, -1));
@@ -268,15 +282,6 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jLTexto_superiorMousePressed
 
-    private void jBRegistrarEquivalenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarEquivalenciaActionPerformed
-        // TODO add your handling code here:
-        Registrar_equivalencias_interfaz reg = new Registrar_equivalencias_interfaz();
-        reg.setControl(control,datoUsuario);
-        this.dispose();
-        reg.setVisible(true);
-      
-    }//GEN-LAST:event_jBRegistrarEquivalenciaActionPerformed
-
     private void jLCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLCerrarMouseClicked
         // TODO add your handling code here:
         int opcion = JOptionPane.showConfirmDialog(null,"¿Desea salir del programa?");
@@ -285,67 +290,112 @@ public class Equivalencias_interfaz extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_jLCerrarMouseClicked
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         // TODO add your handling code here:
-        Consultar_solicitudes_equivalencia consultar = new Consultar_solicitudes_equivalencia();
+        int opcion = JOptionPane.showConfirmDialog(null,"¿Desea cerrar sesion?");
+        if(opcion ==JOptionPane.YES_OPTION) {
+            try {
+                Login_univalle log = new Login_univalle();
+                this.dispose();
+                log.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                
+            }
+
+        }
+    }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jBConsultarSolicitudesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConsultarSolicitudesActionPerformed
+        // TODO add your handling code here:
+                Consultar_solicitudes_equivalencia consultar = new Consultar_solicitudes_equivalencia();
         consultar.setControl(control, datoUsuario);
         this.dispose();
         consultar.setVisible(true);
-       
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_jBConsultarSolicitudesActionPerformed
+
+    private void jBRegistrarEquivalenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRegistrarEquivalenciaActionPerformed
+        // TODO add your handling code here:
+          String sql1=" select codFicha from asignaturaFicha where codFicha='"+datoUsuario+"'";
+        ArrayList<String[]> datos1 = conexion.consulta(sql1);
+        String dato="";
+        
+        // for para la primera consulta
+        for(int i=0; i<datos1.size(); i++){           
+            System.out.println("fila: " + datos1.get(i).toString());
+            
+            String [] auxiliar =datos1.get(i); // me trae el primer arreglo del arraylist en esta variable auxiliar
+            dato=auxiliar[i];
+            break;
+        }
+        System.out.println("vekaskkd: "+dato);
+        //-------------------------------------------------------------
+        if(dato.equals("")){
+            Registro_equivalencia_otra_universidad regOtra = new Registro_equivalencia_otra_universidad();
+            regOtra.setControl(control, datoUsuario);
+            this.dispose();
+            regOtra.setVisible(true);
+        }
+        else{
+            Registrar_equivalencias_interfaz reg = new Registrar_equivalencias_interfaz();
+            reg.setControl(control,datoUsuario);
+            this.dispose();
+            reg.setVisible(true);
+        }
+    }//GEN-LAST:event_jBRegistrarEquivalenciaActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                 try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
-                    
-                } catch (Exception ex) {
-                    System.out.println("Error de recuadro interfaz");
-                } 
-                new Equivalencias_interfaz().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                 try {
+//                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
+//                    
+//                } catch (Exception ex) {
+//                    System.out.println("Error de recuadro interfaz");
+//                } 
+//                new Equivalencias_interfaz().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBConsultarSolicitudes;
     private javax.swing.JButton jBRegistrarEquivalencia;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLCerrar;
     private javax.swing.JLabel jLTexto_superior;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator2;

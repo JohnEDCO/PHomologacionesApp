@@ -22,6 +22,9 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
      * Creates new form Registrar_asignaturas_interfaz
      */
     int x,y;
+    int control=0;
+    int datoUsuario;
+    
     public Registrar_asignaturas_interfaz() {
         initComponents();
         
@@ -36,7 +39,11 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         UI.put("OptionPane.background",Color.white);
         UI.put("Panel.background",Color.white);  
     }
-
+     public void setControl(int controlP,int dato) {
+        
+            datoUsuario=dato;
+            control=controlP;        
+     }   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,6 +53,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
@@ -59,9 +67,8 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         jLTexto_superior = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTCodigoA = new javax.swing.JTextField();
         jTNumCreditos = new javax.swing.JTextField();
-        jTNombreA = new javax.swing.JTextField();
+        jTCodigoA = new javax.swing.JTextField();
         jLCerrar = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -75,14 +82,26 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         jSeparator1 = new javax.swing.JSeparator();
         jRNoValidable = new javax.swing.JRadioButton();
         jButton4 = new javax.swing.JButton();
+        jLNombre = new javax.swing.JLabel();
+        jTNombreA = new javax.swing.JTextField();
+        jTTipo = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono cerrar sesion.png"))); // NOI18N
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 60, 40));
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -198,18 +217,13 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
                 jLTexto_superiorMousePressed(evt);
             }
         });
-        getContentPane().add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
+        getContentPane().add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 100, 110, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/logoUnivalle.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        jTCodigoA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
-        jTCodigoA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTCodigoA.setOpaque(false);
-        getContentPane().add(jTCodigoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, 240, 40));
 
         jTNumCreditos.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTNumCreditos.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -219,12 +233,12 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
                 jTNumCreditosKeyTyped(evt);
             }
         });
-        getContentPane().add(jTNumCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 240, 40));
+        getContentPane().add(jTNumCreditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 240, 40));
 
-        jTNombreA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
-        jTNombreA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTNombreA.setOpaque(false);
-        getContentPane().add(jTNombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 210, 240, 40));
+        jTCodigoA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jTCodigoA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTCodigoA.setOpaque(false);
+        getContentPane().add(jTCodigoA, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 210, 240, 40));
 
         jLCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
         jLCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -237,11 +251,11 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
 
         jLabel8.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel8.setText("Habilitable");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, -1, -1));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 450, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel10.setText("Estado");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 550, -1, -1));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 550, -1, -1));
 
         jRSiHabilitable.setBackground(new java.awt.Color(255, 255, 255));
         jRSiHabilitable.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
@@ -251,7 +265,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
                 jRSiHabilitableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRSiHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 440, -1, -1));
+        getContentPane().add(jRSiHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, -1, -1));
 
         jRInactivo.setBackground(new java.awt.Color(255, 255, 255));
         jRInactivo.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
@@ -261,7 +275,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
                 jRInactivoActionPerformed(evt);
             }
         });
-        getContentPane().add(jRInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 550, -1, -1));
+        getContentPane().add(jRInactivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 550, -1, -1));
 
         jRActivo.setBackground(new java.awt.Color(255, 255, 255));
         jRActivo.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
@@ -271,7 +285,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
                 jRActivoActionPerformed(evt);
             }
         });
-        getContentPane().add(jRActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 550, -1, -1));
+        getContentPane().add(jRActivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 550, -1, -1));
 
         jRNoHabilitable.setBackground(new java.awt.Color(255, 255, 255));
         jRNoHabilitable.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
@@ -281,11 +295,11 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
                 jRNoHabilitableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRNoHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, -1, -1));
+        getContentPane().add(jRNoHabilitable, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 450, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel9.setText("Validable");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 500, -1, -1));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, -1, -1));
 
         jRSiValidable.setBackground(new java.awt.Color(255, 255, 255));
         jRSiValidable.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
@@ -295,9 +309,9 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
                 jRSiValidableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRSiValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 500, -1, -1));
-        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 600, 430, 30));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 410, 430, 30));
+        getContentPane().add(jRSiValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 500, -1, -1));
+        getContentPane().add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 600, 890, 30));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 880, 30));
 
         jRNoValidable.setBackground(new java.awt.Color(255, 255, 255));
         jRNoValidable.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
@@ -307,7 +321,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
                 jRNoValidableActionPerformed(evt);
             }
         });
-        getContentPane().add(jRNoValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 500, -1, -1));
+        getContentPane().add(jRNoValidable, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 500, -1, -1));
 
         jButton4.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton4.setForeground(new java.awt.Color(255, 255, 255));
@@ -323,19 +337,38 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
                 jButton4ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 620, -1, -1));
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 630, -1, -1));
+
+        jLNombre.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jLNombre.setText("Codigo");
+        getContentPane().add(jLNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, -1, -1));
+
+        jTNombreA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jTNombreA.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTNombreA.setOpaque(false);
+        getContentPane().add(jTNombreA, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 210, 240, 40));
+
+        jTTipo.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jTTipo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTTipo.setOpaque(false);
+        jTTipo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTTipoKeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 360, 240, 40));
+
+        jLabel7.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
+        jLabel7.setText("Tipo");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel2.setText("Nombre ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, -1, -1));
-
-        jLabel3.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
-        jLabel3.setText("Codigo");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLabel5.setText("N° creditos");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 370, -1, -1));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, -1));
@@ -351,6 +384,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         // TODO add your handling code here:
          Equivalencias_interfaz equivalencia;
         equivalencia = new Equivalencias_interfaz();
+        equivalencia.setControl(control,datoUsuario);
         this.dispose();
         equivalencia.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -438,11 +472,14 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         System.out.println("seleccion "+ jRActivo.isSelected());
-     if(!jTNombreA.getText().equals("") && !jTCodigoA.getText().equals("") && (jRActivo.isSelected()!=false || jRInactivo.isEnabled()!=false) && (jRNoHabilitable.isSelected()!=false ||jRSiHabilitable.isSelected()!=false) && (jRNoValidable.isSelected()!=false || jRSiValidable.isSelected()!=false) &&(jRActivo.isSelected()!=false || jRInactivo.isSelected()!=false) ){ 
-        try {     
+     if(!jTCodigoA.getText().equals("") && !jTCodigoA.getText().equals("") && (jRActivo.isSelected()!=false || jRInactivo.isEnabled()!=false) && (jRNoHabilitable.isSelected()!=false ||jRSiHabilitable.isSelected()!=false) && (jRNoValidable.isSelected()!=false || jRSiValidable.isSelected()!=false) &&(jRActivo.isSelected()!=false || jRInactivo.isSelected()!=false) ){ 
+         int opcion = JOptionPane.showConfirmDialog(null,"¿Esta seguro que desea registrar la asignatura?");
+       if(opcion ==JOptionPane.YES_OPTION) {
+           try {     
             String nombreA = jTNombreA.getText();
             String codigoA = jTCodigoA.getText();
             int numCreditos = Integer.parseInt(jTNumCreditos.getText());
+            String tipo = jTTipo.getText();
             String opcionHabilitable = "0";
             String opcionValidable = "0";     
             String opcionEstado ="0";
@@ -457,13 +494,14 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
                 opcionEstado="1";
             } 
             
-            String sql = "insert into Asignaturas (nombreAsignatura,codigoAsignatura,numCreditos,validable,habilitable,estado) values ('"+nombreA+"','"+codigoA+"','"+numCreditos+"','"+opcionValidable+"','"+opcionHabilitable+"','"+opcionEstado+"')";
+            String sql = "insert into asignatura (codAsignatura,nombre,numCreditos,tipo,validable,habilitable,activo) values ('"+codigoA+"','"+nombreA+"','"+numCreditos+"','"+tipo+"','"+opcionValidable+"','"+opcionHabilitable+"','"+opcionEstado+"')";
             conexionBD con = new conexionBD();
        
             
-            jTNombreA.setText("");
             jTCodigoA.setText("");
+            jTNombreA.setText("");
             jTNumCreditos.setText("");
+            jTTipo.setText("");
             
             con.sentencia(sql);
            
@@ -474,6 +512,8 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
             JOptionPane.showMessageDialog(null, "Verifique que los campos no esten vacios","Campos vacios" ,JOptionPane.INFORMATION_MESSAGE);
 
         }
+       };
+         
      }
      else{
          JOptionPane.showMessageDialog(null, "Verifique que los campos no esten vacios","Campos vacios" ,JOptionPane.INFORMATION_MESSAGE);
@@ -509,47 +549,66 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
        }
     }//GEN-LAST:event_jTNumCreditosKeyTyped
 
+    private void jTTipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTTipoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTTipoKeyTyped
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        int opcion = JOptionPane.showConfirmDialog(null,"¿Desea cerrar sesion?");
+        if(opcion ==JOptionPane.YES_OPTION) {
+            try {
+                Login_univalle log = new Login_univalle();
+                this.dispose();
+                log.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                
+            }
+
+        }
+    }//GEN-LAST:event_jLabel3MouseClicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registrar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registrar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registrar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registrar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                 try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
-                    
-                } catch (Exception ex) {
-                    System.out.println("Error de recuadro interfaz");
-                } 
-                
-                new Registrar_asignaturas_interfaz().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Registrar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Registrar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Registrar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Registrar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                 try {
+//                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
+//                    
+//                } catch (Exception ex) {
+//                    System.out.println("Error de recuadro interfaz");
+//                } 
+//                
+//                new Registrar_asignaturas_interfaz().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -559,6 +618,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLCerrar;
+    private javax.swing.JLabel jLNombre;
     private javax.swing.JLabel jLTexto_superior;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -567,6 +627,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton jRActivo;
@@ -585,5 +646,6 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
     private javax.swing.JTextField jTCodigoA;
     private javax.swing.JTextField jTNombreA;
     private javax.swing.JTextField jTNumCreditos;
+    private javax.swing.JTextField jTTipo;
     // End of variables declaration//GEN-END:variables
 }
