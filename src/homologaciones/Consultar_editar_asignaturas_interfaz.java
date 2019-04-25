@@ -101,12 +101,12 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         jPopupMenu1 = new javax.swing.JPopupMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
         jLTexto_superior = new javax.swing.JLabel();
-        jSeparator7 = new javax.swing.JSeparator();
         jButton2 = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
         jLCerrar = new javax.swing.JLabel();
@@ -151,6 +151,15 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono cerrar sesion.png"))); // NOI18N
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 60, 40));
+
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, 40, 60));
@@ -178,7 +187,7 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         jSeparator4.setOrientation(javax.swing.SwingConstants.VERTICAL);
         getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 100, 40, 60));
 
-        jLTexto_superior.setFont(new java.awt.Font("Arial", 0, 30)); // NOI18N
+        jLTexto_superior.setFont(new java.awt.Font("Open Sans", 0, 30)); // NOI18N
         jLTexto_superior.setForeground(new java.awt.Color(255, 0, 0));
         jLTexto_superior.setText("UNIVERSIDAD DEL VALLE");
         jLTexto_superior.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
@@ -192,11 +201,7 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
                 jLTexto_superiorMousePressed(evt);
             }
         });
-        getContentPane().add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
-
-        jSeparator7.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 100, 40, 60));
+        getContentPane().add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -434,7 +439,7 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jTbuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 450, 40));
 
-        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono_buscar.png"))); // NOI18N
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoBuscar.png"))); // NOI18N
         jButton8.setToolTipText("");
         jButton8.setBorder(null);
         jButton8.setBorderPainted(false);
@@ -444,7 +449,7 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 190, -1, -1));
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, 50, 60));
 
         jBEditar.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jBEditar.setForeground(new java.awt.Color(255, 255, 255));
@@ -460,7 +465,7 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
                 jBEditarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 550, 190, 50));
+        getContentPane().add(jBEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 550, 160, 50));
 
         jLNombreA.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jLNombreA.setText("Nombre");
@@ -765,46 +770,61 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
        }
     }//GEN-LAST:event_jBEditarActionPerformed
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        int opcion = JOptionPane.showConfirmDialog(null,"¿Desea cerrar sesion?");
+        if(opcion ==JOptionPane.YES_OPTION) {
+            try {
+                Login_univalle log = new Login_univalle();
+                this.dispose();
+                log.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Interfaz_principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }//GEN-LAST:event_jLabel3MouseClicked
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Consultar_editar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Consultar_editar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Consultar_editar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Consultar_editar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                   try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
-                    
-                } catch (Exception ex) {
-                    System.out.println("Error de recuadro interfaz");
-                } 
-                new Consultar_editar_asignaturas_interfaz().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Consultar_editar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Consultar_editar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Consultar_editar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Consultar_editar_asignaturas_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                   try {
+//                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
+//                    
+//                } catch (Exception ex) {
+//                    System.out.println("Error de recuadro interfaz");
+//                } 
+//                new Consultar_editar_asignaturas_interfaz().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBEditar;
@@ -824,6 +844,7 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLTipo;
     private javax.swing.JLabel jLValidable;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuItem jMenuItem1;
@@ -841,7 +862,6 @@ public class Consultar_editar_asignaturas_interfaz extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTextField jTCodigoA;
     private javax.swing.JTextField jTNombreA;

@@ -129,7 +129,7 @@ public class Login_univalle extends javax.swing.JFrame {
                 jLtexto_superiorMousePressed(evt);
             }
         });
-        getContentPane().add(jLtexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 180, 30));
+        getContentPane().add(jLtexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 180, 30));
 
         jLCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cerrar.png"))); // NOI18N
         jLCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

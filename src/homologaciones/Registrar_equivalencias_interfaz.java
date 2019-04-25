@@ -38,6 +38,9 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         jTablePrecargar.setToolTipText("Materias que pueden ser homologadas");
         
         jBPrecargar.setEnabled(false);
+        jBDescartar.setEnabled(false);
+        jBEnviarSolicitud.setEnabled(false);
+        
         jTextFCodigoDestino.setEnabled(false);
         jTextFCodigoOrigen.setEnabled(false);
         
@@ -105,12 +108,12 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
+        jLabel7 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JSeparator();
         jLTexto_superior = new javax.swing.JLabel();
-        jSeparator7 = new javax.swing.JSeparator();
         jButton2 = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
         jLCerrar = new javax.swing.JLabel();
@@ -121,7 +124,6 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jCProgramaOrigen = new javax.swing.JComboBox<>();
         jCProgramaDestino = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
         jTextFCodigoDestino = new javax.swing.JTextField();
         jTextFCodigoOrigen = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -138,6 +140,15 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono cerrar sesion.png"))); // NOI18N
+        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 60, 40));
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -181,10 +192,6 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
-
-        jSeparator7.setForeground(new java.awt.Color(255, 255, 255));
-        jSeparator7.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        getContentPane().add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 100, 40, 60));
 
         jButton2.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
@@ -286,9 +293,6 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         });
         getContentPane().add(jCProgramaDestino, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, 310, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/flecha.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, -1, -1));
-
         jTextFCodigoDestino.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
         jTextFCodigoDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -320,6 +324,11 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTablePrecargar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTablePrecargarMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(jTablePrecargar);
@@ -359,6 +368,11 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         jBDescartar.setContentAreaFilled(false);
         jBDescartar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBDescartar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBDescartar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                jBDescartarMouseReleased(evt);
+            }
+        });
         jBDescartar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBDescartarActionPerformed(evt);
@@ -483,6 +497,7 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         if(jCProgramaDestino.getSelectedIndex()!=-1 && jCProgramaDestino.getSelectedIndex()!=0){
             
             jBPrecargar.setEnabled(true);
+            jBEnviarSolicitud.setEnabled(false);
 
 //----------------------------------------------------------------------------------------------------------------            
          System.out.println("gtt: "+jCProgramaDestino.getSelectedIndex()+jCProgramaDestino.getSelectedItem());
@@ -517,6 +532,7 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         }
         else{
              jBPrecargar.setEnabled(false);
+             jBDescartar.setEnabled(false);
         }
        
     }//GEN-LAST:event_jCProgramaDestinoActionPerformed
@@ -542,26 +558,10 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         
         int maximo=0;
         String nombrePersona="";
-        
-        String sql1="select max (numSolicitud) from solicitud ";
-        ArrayList<String[]> datos1 = conexion.consulta(sql1);
-        
+
         String sql2="select B.nombre from ficha A, estudiante B where A.codFicha='"+datoUsuario+"' and A.cedula = B.cedula "; // sentencia apra obetner el nombe de la persona que hace la solicitud
         ArrayList<String[]> datos2 = conexion.consulta(sql2);
-        
-        // for para la primera consulta
-        for(int i=0; i<datos1.size(); i++){           
-            System.out.println("fila: " + datos1.get(i).toString());
-            
-            String [] auxiliar =datos1.get(i); // me trae el primer arreglo del arraylist en esta variable auxiliar
-            if(auxiliar[i]!=null){
-            maximo= (Integer.parseInt(auxiliar[i])+1);
-            }
-            else{
-                maximo++;
-            }
-            System.out.println("maximo= "+maximo);
-        }
+   
         // for para la segunda consulta
          for(int i=0; i<datos2.size(); i++){           
             System.out.println("fila: " + datos2.get(i).toString());
@@ -572,9 +572,25 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
          System.out.println("uuuuuuuu: "+nombrePersona);
        
        //para agregar la solicitdud
-       String sql3="insert into solicitud (estado,codFicha,nombre,fecha,codProgramaDestino) values('Pendiente','"+datoUsuario+"','"+nombrePersona+"', '"+fechaActual+"', '"+datoSeleccion+"') ";
+       String sql3="insert into solicitud (estado,codFicha,nombre,fecha,codProgramaDestino,iduniversidad) values('Pendiente','"+datoUsuario+"','"+nombrePersona+"', '"+fechaActual+"', '"+datoSeleccion+"','"+1+"') ";
         conexion.sentencia(sql3);
-        
+ //----------------------------------------------------------------------------------       
+         String sql1="select max (numSolicitud) from solicitud ";
+        ArrayList<String[]> datos1 = conexion.consulta(sql1);
+            // for para la primera consulta
+        for(int i=0; i<datos1.size(); i++){           
+            System.out.println("fila: " + datos1.get(i).toString());
+            
+            String [] auxiliar =datos1.get(i); // me trae el primer arreglo del arraylist en esta variable auxiliar
+            if(auxiliar[i]!=null){
+            maximo= (Integer.parseInt(auxiliar[i]));
+            }
+            else{
+                maximo++;
+            }
+            System.out.println("maximo= "+maximo);
+        }
+   //-----------------------------------------------------------------------     
         String sql4="insert into solicitudDetalle (numSolicitud,codAsignatura,nombre,nota) values";
         
         //para agregar la solicitud detalle
@@ -607,10 +623,11 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
          
            DefaultTableModel modelo = (DefaultTableModel) jTablePrecargar.getModel();
             while(modelo.getRowCount()>0)modelo.removeRow(0);
- 
      
         
        } 
+       jBEnviarSolicitud.setEnabled(false);
+       jBDescartar.setEnabled(false);
     }//GEN-LAST:event_jBEnviarSolicitudActionPerformed
 
     private void jBCancelarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarSolicitudActionPerformed
@@ -622,7 +639,9 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
                  equivalencia = new Equivalencias_interfaz();
                  equivalencia.setControl(control, datoUsuario);
                  this.dispose();
+                 
                  equivalencia.setVisible(true);
+                 
               }
     }//GEN-LAST:event_jBCancelarSolicitudActionPerformed
 
@@ -641,6 +660,14 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
             modelo.addRow(fila);
         
        }
+        
+        if(jTablePrecargar.getRowCount()==0){
+            jBEnviarSolicitud.setEnabled(false);
+        }
+        else{
+            jBEnviarSolicitud.setEnabled(true);
+        }
+        jBDescartar.setEnabled(false);
     }//GEN-LAST:event_jBPrecargarActionPerformed
 
     private void jBDescartarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDescartarActionPerformed
@@ -659,48 +686,80 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
         catch(Exception a1){
         JOptionPane.showMessageDialog(this,"\"Debe seleccionar una fila de la consulta primero \nantes de eliminar\"");
         }
+               jBDescartar.setEnabled(false);
+               
     }//GEN-LAST:event_jBDescartarActionPerformed
+
+    private void jTablePrecargarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePrecargarMouseClicked
+        // TODO add your handling code here:
+                jBDescartar.setEnabled(true);
+    }//GEN-LAST:event_jTablePrecargarMouseClicked
+
+    private void jBDescartarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBDescartarMouseReleased
+        // TODO add your handling code here:
+        if(jTablePrecargar.getRowCount()==0){
+            jBEnviarSolicitud.setEnabled(false);
+        }
+        else{
+            jBEnviarSolicitud.setEnabled(true);
+        }
+    }//GEN-LAST:event_jBDescartarMouseReleased
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+        int opcion = JOptionPane.showConfirmDialog(null,"¿Desea cerrar sesion?");
+        if(opcion ==JOptionPane.YES_OPTION) {
+            try {
+                Login_univalle log = new Login_univalle();
+                this.dispose();
+                log.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                
+            }
+
+        }
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Registrar_equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Registrar_equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Registrar_equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Registrar_equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                 try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
-                    
-                } catch (Exception ex) {
-                    System.out.println("Error de recuadro interfaz");
-                } 
-                new Registrar_equivalencias_interfaz().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Registrar_equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Registrar_equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Registrar_equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Registrar_equivalencias_interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                 try {
+//                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
+//                    
+//                } catch (Exception ex) {
+//                    System.out.println("Error de recuadro interfaz");
+//                } 
+//                new Registrar_equivalencias_interfaz().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCancelarSolicitud;
@@ -717,18 +776,17 @@ public class Registrar_equivalencias_interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLCerrar;
     private javax.swing.JLabel jLTexto_superior;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JTable jTablePrecargar;
     private javax.swing.JTextField jTextFCodigoDestino;

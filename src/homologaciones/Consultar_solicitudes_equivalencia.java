@@ -25,7 +25,7 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
      */
     int x,y;
     conexionBD conexion = new conexionBD();
-    int control;
+    int control; // control es el valor que define si ingreso un gestor o un estudiante
     int datoUsuario; // aqui se guarda el codigo del estudiante que inicio sesion, codigo de origen
     
     public Consultar_solicitudes_equivalencia() {
@@ -34,10 +34,39 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
         AWTUtilities.setWindowOpaque(this, false); 
         
         jBVer.setEnabled(false);
+        jBAREchazarSolicitud.setEnabled(false);
+        jBAprobarSolicitud.setEnabled(false);
     }
     public void setControl(int controlP,int dato) {
         datoUsuario=dato;
         control=controlP;
+        
+        if(control==1){
+
+            jLDesde.setVisible(false);
+            jLHasta.setVisible(false);
+            rSDateDesde.setVisible(false);
+            rSDateHasta.setVisible(false);
+            jBRealizarBusqueda.setVisible(false);
+            jBAREchazarSolicitud.setVisible(false);
+            jBAprobarSolicitud.setVisible(false);
+            
+            String sql="select * from solicitud where codFicha='"+datoUsuario+"'";
+            conexion.consulta(sql);
+            
+            ArrayList<String[]> datos = conexion.consulta(sql);
+            
+            DefaultTableModel modelo = (DefaultTableModel)jTSolicitudes.getModel();
+     
+            while(modelo.getRowCount() > 0){
+                modelo.removeRow(0);
+            }
+            for(String[] fila : datos){           
+                modelo.addRow(fila);
+
+           }
+            
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -48,6 +77,7 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jSeparator6 = new javax.swing.JSeparator();
@@ -68,7 +98,7 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
         jBAprobarSolicitud = new javax.swing.JButton();
         jBVer = new javax.swing.JButton();
         jBRealizarBusqueda = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollSolicitudes = new javax.swing.JScrollPane();
         jTSolicitudes = new javax.swing.JTable();
         rSDateDesde = new rojeru_san.componentes.RSDateChooser();
         rSDateHasta = new rojeru_san.componentes.RSDateChooser();
@@ -77,6 +107,15 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icono cerrar sesion.png"))); // NOI18N
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 110, 60, 40));
 
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator2.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -192,7 +231,7 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
                 jLTexto_superiorMousePressed(evt);
             }
         });
-        getContentPane().add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 40, -1, -1));
+        getContentPane().add(jLTexto_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, -1, -1));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/boton2.png"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 100, 110, -1));
@@ -303,9 +342,9 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
                 jTSolicitudesMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTSolicitudes);
+        jScrollSolicitudes.setViewportView(jTSolicitudes);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 630, 240));
+        getContentPane().add(jScrollSolicitudes, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 630, 240));
 
         rSDateDesde.setColorBackground(new java.awt.Color(207, 32, 62));
         rSDateDesde.setColorButtonHover(new java.awt.Color(207, 32, 62));
@@ -322,7 +361,7 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
         getContentPane().add(rSDateHasta, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, -1, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/recuadro_base.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 1110, -1));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 710));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -404,6 +443,9 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
        else{
            JOptionPane.showMessageDialog(null,"Porfavor digite los campos de fecha");
        }
+       jBAREchazarSolicitud.setEnabled(false);
+       jBAprobarSolicitud.setEnabled(false);
+       jBVer.setEnabled(false);
     }//GEN-LAST:event_jBRealizarBusquedaActionPerformed
 
     private void jBVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVerActionPerformed
@@ -421,10 +463,47 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
         String programaDestino = (String)modelo.getValueAt(filaSel,5);
         
         detalle.setInformacion(estado, codigo, nombre, solicitud, programaDestino);
+        if(control!=1){
+//----------------------------------------------------------------------------------------------------------------
+        String sql2="select estado from solicitud where numSolicitud='"+solicitud+"'";        
+        ArrayList<String[]> datos = conexion.consulta(sql2);
+        String estadoSol="";
         
+        for(int i=0; i<datos.size(); i++){           
+            
+            String [] auxiliar =datos.get(i); // me trae el primer arreglo del arraylist en esta variable auxiliar
+            estadoSol=auxiliar[i];
+            System.out.println("Estado solicitud: "+ estadoSol);
+            break;
+        }
+ //----------------------------------------------------------------------------------------
+    if(estadoSol.equals("Pendiente")){
              System.out.println("Sid"+estado+" "+codigo+" "+nombre+" "+programaDestino);
+        String sql="UPDATE solicitud SET estado= 'En revisión' WHERE numSolicitud='"+Integer.parseInt(solicitud)+"'";        
+        conexion.sentencia(sql);
+//----------------------------------------------------------------------------------------------------------       
+         String fomatoFecha ="dd-MM-yyyy";
+        Date fechaDesde = rSDateDesde.getDatoFecha();
+        Date fechaHasta = rSDateHasta.getDatoFecha();
+        SimpleDateFormat formateador = new SimpleDateFormat(fomatoFecha);
+        
+        String sql3="select * from solicitud where fecha between '"+formateador.format(fechaDesde)+"' and '"+formateador.format(fechaHasta)+"'";
+        conexion.consulta(sql3);
+         
+        ArrayList<String[]> datos2 = conexion.consulta(sql3);
+        
+        modelo = (DefaultTableModel)jTSolicitudes.getModel();
+     
+            while(modelo.getRowCount() > 0){
+                modelo.removeRow(0);
+            }
+            for(String[] fila : datos2){           
+                modelo.addRow(fila);
 
+           }
                }
+        }
+        }
         catch(Exception a1){
         JOptionPane.showMessageDialog(this,"\"Debe seleccionar una fila de la consulta primero \nantes de eliminar\"");
         }
@@ -433,57 +512,154 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
 
     private void jBAprobarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAprobarSolicitudActionPerformed
         // TODO add your handling code here:
+        try{ 
+        int opcion = JOptionPane.showConfirmDialog(null,"¿Esta seguro de aprobar la solicitud seleccionada?.Asegurese de haber revisado la solicitud ");
+        if(opcion ==JOptionPane.YES_OPTION) {
+            
+            jBAREchazarSolicitud.setEnabled(false);
+            jBAprobarSolicitud.setEnabled(false);
+            jBVer.setEnabled(false);
+        int filaSel = jTSolicitudes.getSelectedRow();
+        
+            DefaultTableModel modelo = (DefaultTableModel)jTSolicitudes.getModel();
+            String solicitud = (String) modelo.getValueAt(filaSel, 0);
+            String sql="UPDATE solicitud SET estado= 'Aprobada' WHERE numSolicitud='"+Integer.parseInt(solicitud)+"'";        
+            conexion.sentencia(sql);
+  //----------------------------------------------------------------------------------
+            String fomatoFecha ="dd-MM-yyyy";
+            Date fechaDesde = rSDateDesde.getDatoFecha();
+            Date fechaHasta = rSDateHasta.getDatoFecha();
+            SimpleDateFormat formateador = new SimpleDateFormat(fomatoFecha);
+
+            String sql2="select * from solicitud where fecha between '"+formateador.format(fechaDesde)+"' and '"+formateador.format(fechaHasta)+"'";
+            conexion.consulta(sql2);
+
+            ArrayList<String[]> datos = conexion.consulta(sql2);
+
+            modelo = (DefaultTableModel)jTSolicitudes.getModel();
+
+                while(modelo.getRowCount() > 0){
+                    modelo.removeRow(0);
+                }
+                for(String[] fila : datos){           
+                    modelo.addRow(fila);
+
+               }
+            
+               }
+        }
+        catch(Exception a1){
+        JOptionPane.showMessageDialog(this,"\"Debe seleccionar una fila de la consulta primero \nantes de eliminar\"");
+        }
+        
+       
     }//GEN-LAST:event_jBAprobarSolicitudActionPerformed
 
     private void jBAREchazarSolicitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAREchazarSolicitudActionPerformed
         // TODO add your handling code here:
+         int opcion = JOptionPane.showConfirmDialog(null,"¿Esta seguro de Rechazar la solicitud seleccionada?.Asegurese de haber revisado la solicitud ");
+        if(opcion ==JOptionPane.YES_OPTION) {
+            
+            jBAREchazarSolicitud.setEnabled(false);
+            jBAprobarSolicitud.setEnabled(false);
+            jBVer.setEnabled(false);
+             try{
+        int filaSel = jTSolicitudes.getSelectedRow();
+        
+            DefaultTableModel modelo = (DefaultTableModel)jTSolicitudes.getModel();
+            String solicitud = (String) modelo.getValueAt(filaSel, 0);
+            String sql="UPDATE solicitud SET estado= 'Rechazada' WHERE numSolicitud='"+Integer.parseInt(solicitud)+"'";        
+            conexion.sentencia(sql);
+       //----------------------------------------------------------------------------------------------
+               String fomatoFecha ="dd-MM-yyyy";
+            Date fechaDesde = rSDateDesde.getDatoFecha();
+            Date fechaHasta = rSDateHasta.getDatoFecha();
+            SimpleDateFormat formateador = new SimpleDateFormat(fomatoFecha);
+
+            String sql2="select * from solicitud where fecha between '"+formateador.format(fechaDesde)+"' and '"+formateador.format(fechaHasta)+"'";
+            conexion.consulta(sql2);
+
+            ArrayList<String[]> datos = conexion.consulta(sql2);
+
+            modelo = (DefaultTableModel)jTSolicitudes.getModel();
+
+                while(modelo.getRowCount() > 0){
+                    modelo.removeRow(0);
+                }
+                for(String[] fila : datos){           
+                    modelo.addRow(fila);
+
+               }
+               }
+        catch(Exception a1){
+        JOptionPane.showMessageDialog(this,"\"Debe seleccionar una fila de la consulta primero \nantes de eliminar\"");
+        }
+        }
     }//GEN-LAST:event_jBAREchazarSolicitudActionPerformed
 
     private void jTSolicitudesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTSolicitudesMouseClicked
         // TODO add your handling code here:
         jBVer.setEnabled(true);
+         jBAREchazarSolicitud.setEnabled(true);
+        jBAprobarSolicitud.setEnabled(true);
+        
     }//GEN-LAST:event_jTSolicitudesMouseClicked
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        // TODO add your handling code here:
+        int opcion = JOptionPane.showConfirmDialog(null,"¿Desea cerrar sesion?");
+        if(opcion ==JOptionPane.YES_OPTION) {
+            try {
+                Login_univalle log = new Login_univalle();
+                this.dispose();
+                log.setVisible(true);
+            } catch (ClassNotFoundException ex) {
+                
+            }
+
+        }
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Consultar_solicitudes_equivalencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Consultar_solicitudes_equivalencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Consultar_solicitudes_equivalencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Consultar_solicitudes_equivalencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                  try {
-                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
-                    
-                } catch (Exception ex) {
-                    System.out.println("Error de recuadro interfaz");
-                } 
-                new Consultar_solicitudes_equivalencia().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(Consultar_solicitudes_equivalencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(Consultar_solicitudes_equivalencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(Consultar_solicitudes_equivalencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(Consultar_solicitudes_equivalencia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                  try {
+//                    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName()); //hace parte de lo del marco de la interfaz
+//                    
+//                } catch (Exception ex) {
+//                    System.out.println("Error de recuadro interfaz");
+//                } 
+//                new Consultar_solicitudes_equivalencia().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAREchazarSolicitud;
@@ -500,9 +676,10 @@ public class Consultar_solicitudes_equivalencia extends javax.swing.JFrame {
     private javax.swing.JLabel jLHasta;
     private javax.swing.JLabel jLTexto_superior;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollSolicitudes;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator6;
