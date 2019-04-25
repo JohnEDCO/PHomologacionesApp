@@ -54,7 +54,6 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
         jLCerrar = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
         jREstudiante = new javax.swing.JRadioButton();
         jRGestor = new javax.swing.JRadioButton();
         jTNombre = new javax.swing.JTextField();
@@ -134,10 +133,6 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 620, 170, 60));
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel11.setText("Desarrollado por @Equipo Integrador");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 700, -1, -1));
 
         jREstudiante.setBackground(new java.awt.Color(255, 255, 255));
         jREstudiante.setFont(new java.awt.Font("Open Sans", 0, 16)); // NOI18N
@@ -517,7 +512,6 @@ public class Registrar_usuarios_interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLEstudiante;
     private javax.swing.JLabel jLGestor;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

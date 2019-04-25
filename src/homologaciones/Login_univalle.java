@@ -254,8 +254,8 @@ public class Login_univalle extends javax.swing.JFrame {
         jLGestor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/iconoMaestro.png"))); // NOI18N
         getContentPane().add(jLGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 340, -1, 60));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/login3.png"))); // NOI18N
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 1110, 720));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/loginConNombre.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -318,11 +318,13 @@ public class Login_univalle extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jREstudiante.isSelected()==true){
             jRGestor.setEnabled(false);
+            jLGestor.setEnabled(false);
             control=1;
             sql = "select codFicha, contraseña from estudiante A, ficha B where  B.codFicha= ? and A.contraseña = ? and A.cedula = B.cedula";
         }
         else{
              jRGestor.setEnabled(true);
+             jLGestor.setEnabled(true);
              control=0;
         }
     }//GEN-LAST:event_jREstudianteActionPerformed
@@ -331,11 +333,13 @@ public class Login_univalle extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (jRGestor.isSelected()==true){
             jREstudiante.setEnabled(false);
+            jLEstudiante.setEnabled(false);
             control=2;
             sql = "select cedula, contraseña from gestor where cedula = ? and contraseña = ? ";
         }
         else{
             jREstudiante.setEnabled(true);
+            jLEstudiante.setEnabled(true);
             control=0;
         }
     }//GEN-LAST:event_jRGestorActionPerformed

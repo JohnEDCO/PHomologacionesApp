@@ -620,6 +620,7 @@ public class Registrar_asignaturas_interfaz  extends javax.swing.JFrame  {
         Asignaturas_interfaz asignaturas ;
 
         asignaturas = new Asignaturas_interfaz();
+        asignaturas.setControl(control,datoUsuario);
         this.dispose();
         asignaturas.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
